@@ -34,7 +34,9 @@ Instructions can be found within the documentation for this template: https://mi
 ## Running the app on browser
 
 The build for this project can be found within the following directory:
-```itcs3122-finalproject\FinalProject\bin\Debug\net9.0\browserextension```
+```
+itcs3122-finalproject\FinalProject\bin\Debug\net9.0\browserextension
+```
 
 To run the app, you can use any browser to load this project as a temporary add-on. Instructions can be found within the documentation for this template: https://mingyaulee.github.io/Blazor.BrowserExtension/running-and-debugging
 
