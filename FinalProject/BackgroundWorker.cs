@@ -1,29 +1,22 @@
 ﻿using Blazor.BrowserExtension;
 
-namespace FinalProject;
-
-// Classes
-public class {
-
-}
-
-
-// BackgroundWorker class
-public partial class BackgroundWorker : BackgroundWorkerBase
+namespace FinalProject
 {
-    [BackgroundWorkerMain]
-    public override void Main()
+    public partial class BackgroundWorker : BackgroundWorkerBase
     {
-        WebExtensions.Runtime.OnInstalled.AddListener(OnInstalled);
-    }
-
-    async Task OnInstalled()
-    {
-        var indexPageUrl = WebExtensions.Runtime.GetURL("index.html");
-        await WebExtensions.Tabs.Create(new()
+        [BackgroundWorkerMain]
+        public override void Main()
         {
-            Url = indexPageUrl
-        });
+            WebExtensions.Runtime.OnInstalled.AddListener(OnInstalled);
+        }
+
+        async Task OnInstalled()
+        {
+            var indexPageUrl = WebExtensions.Runtime.GetURL("index.html");
+            await WebExtensions.Tabs.Create(new()
+            {
+                Url = indexPageUrl
+            });
+        }
     }
 }
-
