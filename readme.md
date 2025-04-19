@@ -54,3 +54,14 @@ To run the app, you can use any browser to load this project as a temporary add-
 > 1. Navigate to the URL about:debugging#/runtime/this-firefox. You need to copy this link and paste it in the address bar.
 > 2. Click on Load Temporary Add-on..., then navigate to `bin/Debug/net9.0/browserextension` and select any file in the directory. 
 >    - For Mozilla Firefox, the extension manifest needs to be modified before you can load it. See Background Worker page: https://mingyaulee.github.io/Blazor.BrowserExtension/background-worker#mozilla-firefox
+>    - The implementation in Firefox requires a small adjustment in the `manifest.json`. This can be found within the `browserextension` directory.
+>      ```
+>      {
+>        ...
+>        "background": {
+>          "scripts": ["content/BackgroundWorker.js"],
+>          "type": "module"
+>        },
+>        ...
+>      }
+>      ```
