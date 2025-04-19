@@ -1,6 +1,6 @@
 ﻿{
   "manifest_version": 3,
-  "name": "FinalProject Extension",
+  "name": "WebLibrary (ITCS-3112-051 Final Project)",
   "description": "My browser extension built with Blazor WebAssembly",
   "version": "0.1",
   "background": {
@@ -16,6 +16,11 @@
   },
   "content_security_policy": {
     "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "bnguye40@charlotte.edu"
+    }
   },
   "web_accessible_resources": [
     {
