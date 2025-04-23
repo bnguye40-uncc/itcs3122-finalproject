@@ -1,3 +1,25 @@
-body {
-    background-color: #fff;
+.page {
+    display: grid;
+    grid-template-areas:
+        "a b b b b b"
+        "a c c c c c"
+        "a c c c c c";
+    margin: 100px 50px;
+}
+
+.sidebar {
+    grid-area: a;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.top-row {
+    grid-area: b;
+    min-width: 600px;
+}
+
+.content {
+    grid-area: c;
+    min-width: 600px;
 }
