@@ -19,7 +19,11 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "bnguye40@charlotte.edu"
+      "id": "bnguye40@charlotte.edu",
+      "background": {
+        "scripts": ["content/BackgroundWorker.js"],
+        "type": "module"
+      }
     }
   },
   "web_accessible_resources": [
