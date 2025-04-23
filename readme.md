@@ -4,6 +4,8 @@ Created by Benjamin Nguyen, 4/17/2025
 
 This project built with C# within the web framework, Blazor. It uses a template for browser extensions made by **mingyaulee**. To learn more, read the documentation: https://mingyaulee.github.io/Blazor.BrowserExtension/
 
+This project also uses Blazored LocalStorage, a library which provides access to the browsers local storage made by **Chris Sainty**: https://github.com/Blazored/LocalStorage
+
 ## Setup
 
 Instructions can be found within the documentation for this template: https://mingyaulee.github.io/Blazor.BrowserExtension/setup-existing-project

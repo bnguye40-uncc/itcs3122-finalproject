@@ -1,5 +1,29 @@
 @page "/bookmark.html"
+@inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
 
-<h3>Website Name</h3>
-<p>Website link: <a href=@url>@url</a></p>
-<p>Other info</p>
+<div class="bookmark">
+    <h3 class="name">@Name</h3>
+    <a class="url" href="">@URL</a>
+    <ul class="fields">
+    @foreach (var item in CustomFieldsArray)
+    {  
+        
+    }
+    </ul>
+    <ul class="tags">
+    @foreach (var item in Tags)
+    {  
+        <li>@item</li>
+    }
+    </ul>
+</div>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        localStorage.SetItem(Name, this);
+        var bookmark = localStorage.GetItem<Bookmark>(Name);
+    }
+
+}

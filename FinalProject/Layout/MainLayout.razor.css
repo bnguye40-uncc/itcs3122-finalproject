@@ -1,25 +1,32 @@
+.html {
+    overflow: auto;
+}
+
 .page {
     display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr min-content;
     grid-template-areas:
-        "a b b b b b"
-        "a c c c c c"
-        "a c c c c c";
-    margin: 100px 50px;
+        "a b"
+        "a c";
+    margin: 30px 90px;
 }
 
 .sidebar {
     grid-area: a;
     display: flex;
     flex-direction: column;
-    min-width: 300px;
+    min-width: 240px;
 }
 
 .top-row {
     grid-area: b;
-    min-width: 600px;
+    width: auto;
+    min-width: 480px;
 }
 
 .content {
     grid-area: c;
-    min-width: 600px;
+    width: auto;
+    min-width: 480px;
 }

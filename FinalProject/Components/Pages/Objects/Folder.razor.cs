@@ -4,8 +4,8 @@ namespace FinalProject.Components.Pages.Objects;
 
 public partial class Folder : ComponentBase
 {
-    public string name { get; set; } = "";
-    public string description { get; set; } = "";
-    public ComponentBase[] items { get; set; } = [];
-    public bool isCollapsed { get; set; } = false;
+    public string Name { get; set; } = "";
+    public string Description { get; set; } = "";
+    public List<ComponentBase> Items { get; set; } = [];
+    public bool IsCollapsed { get; set; } = false;
 }

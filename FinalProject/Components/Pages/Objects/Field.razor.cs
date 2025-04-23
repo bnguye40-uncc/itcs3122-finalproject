@@ -4,7 +4,7 @@ namespace FinalProject.Components.Pages.Objects;
 
 public partial class Field : ComponentBase
 {
-    public string name { get; set; } = "";
-    public string text { get; set; } = "";
-    public string place { get; set; } = "";
+    public string Name { get; set; } = "Default Field";
+    public string Text { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    public string Placeholder { get; set; } = "Placeholder...";
 }

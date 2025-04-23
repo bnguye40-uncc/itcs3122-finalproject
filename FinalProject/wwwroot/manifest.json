@@ -5,6 +5,7 @@
   "version": "0.1",
   "background": {
     "service_worker": "content/BackgroundWorker.js",
+    "scripts": ["content/BackgroundWorker.js"],
     "type": "module"
   },
   "action": {
@@ -19,11 +20,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "bnguye40@charlotte.edu",
-      "background": {
-        "scripts": ["content/BackgroundWorker.js"],
-        "type": "module"
-      }
+      "id": "bnguye40@uncc"
     }
   },
   "web_accessible_resources": [

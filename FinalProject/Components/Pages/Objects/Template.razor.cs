@@ -4,7 +4,7 @@ namespace FinalProject.Components.Pages.Objects;
 
 public partial class Template : ComponentBase
 {
-    public string name { get; set; } = "";
-    public string description { get; set; } = "";
-    public List<Field> customFieldsArray { get; set; } = [];
+    public string Name { get; set; } = "Default Template";
+    public string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    public List<Field> TemplateFieldsArray { get; set; } = [];
 }
