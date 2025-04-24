@@ -1,0 +1,23 @@
+@page "/folder.html"
+@inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
+
+<div class="bookmark">
+    <h3 class="name">@Name</h3>
+    <p>@Description</p>
+    <ul class="folder-items">
+    @foreach (var item in Items)
+    {  
+        
+    }
+    </ul>
+</div>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        localStorage.SetItem(Name, this);
+        var folder = localStorage.GetItem<Folder>(Name);
+    }
+
+}

@@ -9,6 +9,8 @@
     "type": "module"
   },
   "action": {
+    "default_icon": "favicon.png",
+    "default_title": "WebLibrary",
     "default_popup": "popup.html"
   },
   "options_ui": {
