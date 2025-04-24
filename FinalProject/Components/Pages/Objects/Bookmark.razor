@@ -4,18 +4,21 @@
 <div class="bookmark">
     <h3 class="name">@Name</h3>
     <a class="url" href="">@URL</a>
+    <p>@Description</p>
+    <p>@CustomTemplate.Name</p>
     <ul class="fields">
-    @foreach (var item in CustomFieldsArray)
+    @foreach (var field in CustomFieldsArray)
     {  
-        
+        <Field Name="@field.Name" />
     }
     </ul>
     <ul class="tags">
-    @foreach (var item in Tags)
+    @foreach (var tag in Tags)
     {  
-        <li>@item</li>
+        <li>@tag</li>
     }
     </ul>
+    <smalltext>Keyword: @Keyword</smalltext>
 </div>
 
 @code {
