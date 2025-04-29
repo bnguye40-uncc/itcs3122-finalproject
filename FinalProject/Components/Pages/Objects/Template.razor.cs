@@ -9,5 +9,7 @@ public partial class Template : ComponentBase
     [Parameter]
     public string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     [Parameter]
-    public List<Field> TemplateFieldsArray { get; set; } = [];
+    public string[] TemplateTags { get; set; } = ["tag1", "tag2", "tag3"];
+    [Parameter]
+    public List<Field> TemplateFields { get; set; } = [];
 }

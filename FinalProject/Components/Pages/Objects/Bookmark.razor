@@ -1,28 +1,62 @@
 @page "/bookmark.html"
 @inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
 
+<style>
+    .tags-list {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        gap: 1em;
+        > li {
+            font-size: small;
+            border: solid 1px;
+            border-radius: 5px;
+            padding: 3px;
+        }
+    }
+    .fields-list {
+        list-style: none;
+        padding-left: 0;
+    }
+</style>
+
 <div class="bookmark">
-    <h3 class="name">@Name</h3>
-    <a class="url" href="">@URL</a>
-    <p>@Description</p>
-    <p>@CustomTemplate.Name</p>
-    <ul class="fields">
-    @foreach (var field in CustomFieldsArray)
-    {  
-        <Field Name="@field.Name" />
-    }
-    </ul>
-    <ul class="tags">
-    @foreach (var tag in Tags)
-    {  
-        <li>@tag</li>
-    }
-    </ul>
-    <smalltext>Keyword: @Keyword</smalltext>
+    <div class="bookmark-header">
+        <h3 class="name">@Name <button class="edit-button" id="editButton" onClick="">Edit</button> </h3>
+        <a class="url" href="">@URL</a>
+    </div>
+    <div class="bookmark-contents">
+        <ul class="tags-list">
+        @foreach (var tag in Tags)
+        {  
+            <li>@tag</li>
+        }
+        </ul>
+        <small class="keyword">Keyword: @Keyword</small>
+        <p class="description">@Description</p>
+        <div class="custom-fields-list">
+            @foreach (var field in CustomFields)
+            {  
+                <Field Name="@field.Name" />
+            }
+        </div>
+        <select class="custom-templates-selector" id="templatesSelector" value="@CustomTemplate">
+            <option selected disabled>Choose Template</option>
+            @if (AllTemplates.Any())
+                @foreach (var template in AllTemplates)
+                {
+                    <option value="@template">@template.Name</option>
+                }
+        </select>
+    </div>
 </div>
 
 @code {
-
+    [CascadingParameter]
+    public List<Template>? AllTemplates { get; set; }
+    
     protected override void OnInitialized()
     {
         localStorage.SetItem(Name, this);

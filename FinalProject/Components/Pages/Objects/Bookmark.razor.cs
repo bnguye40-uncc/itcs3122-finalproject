@@ -17,5 +17,5 @@ public partial class Bookmark : ComponentBase, IFolderItem
     [Parameter]
     public Template CustomTemplate { get; set; } = new Template();
     [Parameter]
-    public List<Field> CustomFieldsArray { get; set; } = new List<Field> { new Field(), new Field() };
+    public List<Field> CustomFields { get; set; } = new List<Field> { new Field(), new Field() };
 }

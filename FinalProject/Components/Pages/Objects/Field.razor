@@ -1,5 +1,46 @@
+<!-- CSS -->
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 
-<form>
-    <label for="@Name">@Name:</label>
-    <input type="text" id="@Name" name="@Name" placeholder="@Placeholder">
-</form>
+<!-- Component -->
+<div class="custom-field">
+
+    <div class="display @showDisplay">
+        <p><strong>@Name:</strong> @Value</p>
+        <button @onclick="ToggleEditMode">Edit</button>
+    </div>
+
+    <div class="editing @showEditing">
+        <label>
+            @Name:
+            <input type="text" placeholder="@Placeholder" @bind="@newValue" />
+        </label>
+        <button @onclick="SetValue">Done</button>
+    </div>
+
+</div>
+
+<!-- C# -->
+@code {
+    private string showDisplay = "";
+    private string showEditing = "hidden";
+    private string newValue = "";
+
+    protected override void OnInitialized()
+    {
+        newValue = Value;
+    }
+
+    private void ToggleEditMode() {
+        showDisplay = showDisplay == string.Empty ? "hidden" : "";
+        showEditing = showEditing == string.Empty ? "hidden" : "";
+    }
+
+    private void SetValue() {
+        if (newValue != string.Empty) { Value = newValue; }
+        ToggleEditMode();
+    }
+}
