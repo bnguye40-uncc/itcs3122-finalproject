@@ -1,24 +1,28 @@
-<!-- CSS -->
-<style>
-    .hidden {
-        display: none;
-    }
-</style>
-
 <!-- Component -->
-<div class="custom-field">
+<div class="@Class">
 
     <div class="display @showDisplay">
-        <p><strong>@Name:</strong> @Value</p>
         <button @onclick="ToggleEditMode">Edit</button>
+        <strong>@Name: </strong>
+        @if (Class == "url") {
+            <a href=@Value>@Value</a>
+        } else {
+            @Value
+        }
+        
     </div>
 
     <div class="editing @showEditing">
-        <label>
-            @Name:
-            <input type="text" placeholder="@Placeholder" @bind="@newValue" />
-        </label>
         <button @onclick="SetValue">Done</button>
+        <button @onclick="CancelEdit">Cancel</button>
+        <label>
+            <strong>@Name:</strong>
+            @if (Class == "description") {
+                <textarea placeholder="@Placeholder" @bind="@newValue" rows="4" cols="120"></textarea>
+            } else {
+                <input placeholder="@Placeholder" @bind="@newValue"/>
+            }
+        </label>
     </div>
 
 </div>
@@ -41,6 +45,11 @@
 
     private void SetValue() {
         if (newValue != string.Empty) { Value = newValue; }
+        ToggleEditMode();
+    }
+
+    private void CancelEdit() {
+        newValue = Value;
         ToggleEditMode();
     }
 }

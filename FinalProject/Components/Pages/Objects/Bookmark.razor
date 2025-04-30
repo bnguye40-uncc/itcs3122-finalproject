@@ -1,6 +1,7 @@
-@page "/bookmark.html"
+@page "/bookmark"
 @inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
 
+<!-- CSS -->
 <style>
     .tags-list {
         list-style: none;
@@ -20,39 +21,54 @@
         list-style: none;
         padding-left: 0;
     }
+    .hidden {
+        display: none;
+    }
 </style>
 
+<!-- Component -->
 <div class="bookmark">
     <div class="bookmark-header">
-        <h3 class="name">@Name <button class="edit-button" id="editButton" onClick="">Edit</button> </h3>
-        <a class="url" href="">@URL</a>
+        <Field Class="name" Name="Name" Value=@Name Placeholder="Website name..." />
     </div>
     <div class="bookmark-contents">
-        <ul class="tags-list">
-        @foreach (var tag in Tags)
-        {  
-            <li>@tag</li>
-        }
-        </ul>
-        <small class="keyword">Keyword: @Keyword</small>
-        <p class="description">@Description</p>
+
+        <Field Class="url" Name="URL" Value=@URL Placeholder="Paste URL here..." />
+
+        <Field Class="keyword" Name="Keyword" Value=@Keyword Placeholder="Add a keyword..."/>
+
+        <Field Class="description" Name="Description" Value=@Description Placeholder="Write a short description here..."/>
+
         <div class="custom-fields-list">
             @foreach (var field in CustomFields)
             {  
-                <Field Name="@field.Name" />
+                <Field Class="custom-field" Name="@field.Name" />
             }
         </div>
-        <select class="custom-templates-selector" id="templatesSelector" value="@CustomTemplate">
-            <option selected disabled>Choose Template</option>
-            @if (AllTemplates.Any())
-                @foreach (var template in AllTemplates)
-                {
-                    <option value="@template">@template.Name</option>
-                }
-        </select>
+
+        <ul class="tags-list">
+            @foreach (var tag in Tags)
+            {  
+                <li>@tag</li>
+            }
+        </ul>
+
+        <div class="template">
+            <select class="custom-templates-selector" id="templatesSelector" value="@CustomTemplate">
+                <option selected disabled>Choose Template</option>
+                @if (AllTemplates.Any())
+                    @foreach (var template in AllTemplates)
+                    {
+                        <option value="@template">@template.Name</option>
+                    }
+            </select>
+            <button class="set-template-button">Set as Template</button>
+        </div>
+
     </div>
 </div>
 
+<!-- C# -->
 @code {
     [CascadingParameter]
     public List<Template>? AllTemplates { get; set; }

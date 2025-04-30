@@ -1,4 +1,6 @@
 public interface IFolderItem {
-    public string Name { get; set; }
-    public string Description { get; set; }
+    string Class { get; }
+    string Name { get; }
+    string Description { get; }
+    bool IsFolder { get; }
 }

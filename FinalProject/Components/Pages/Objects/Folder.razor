@@ -1,23 +1,36 @@
-@page "/folder.html"
 @inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
 
-<div class="bookmark">
-    <h3 class="name">@Name</h3>
-    <p>@Description</p>
-    <ul class="folder-items">
-    @foreach (var item in Items)
-    {  
-        
+<div class="folder-container"> 
+    <NavLink class="@($"folder {Class}")" @onclick="Expand">
+        @Name
+    </NavLink>
+
+    @if (isExpanded)
+    {
+        foreach (var item in Items) {
+            if (item.IsFolder == true)
+            {
+                <Folder Class="subfolder" Name="@item.Name" Description="@item.Description" />
+            } else {
+                <div class="folder-bookmark-item">
+                    <NavLink href="/bookmark.html">@item.Name</NavLink>
+                </div>
+            }
+        }
     }
-    </ul>
 </div>
 
 @code {
-
     protected override void OnInitialized()
-    {
+    {   
         localStorage.SetItem(Name, this);
         var folder = localStorage.GetItem<Folder>(Name);
+
+        Items.Add(new Folder());
+        Items.Add(new Bookmark());
     }
 
+    private void Expand() {
+        isExpanded = !isExpanded;
+    }
 }
