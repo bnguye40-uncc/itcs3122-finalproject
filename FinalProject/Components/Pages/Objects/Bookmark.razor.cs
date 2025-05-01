@@ -12,8 +12,8 @@ public partial class Bookmark : ComponentBase, IFolderItem
     public string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet quam at sem semper ultricies. Nunc orci justo, blandit non arcu at, auctor feugiat neque. Nunc vel dapibus leo, eget porttitor leo.";
     [Parameter]
     public string URL { get; set; } = "https://docs.microsoft.com/aspnet/";
-    [Parameter]
-    public string[] Tags { get; set; } = ["tag1", "tag2", "tag3"];
+    // [Parameter]
+    // public string[] Tags { get; set; } = ["tag1", "tag2", "tag3"];       Implementation WIP
     [Parameter]
     public string Keyword { get; set; } = "keyword";
     [Parameter]

@@ -19,6 +19,11 @@
     min-width: 240px;
 }
 
+.folder-organizer {
+    display: flex;
+    flex-direction: row;
+}
+
 .top-row {
     grid-area: b;
     width: auto;

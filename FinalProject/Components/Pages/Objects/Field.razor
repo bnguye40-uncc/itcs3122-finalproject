@@ -16,11 +16,21 @@
         <button @onclick="SetValue">Done</button>
         <button @onclick="CancelEdit">Cancel</button>
         <label>
-            <strong>@Name:</strong>
+            <!-- Field Name -->
+            @if (Class == "custom-field") {
+                <input placeholder="Field Name..." @bind="@newName"/>
+            } else {
+                <strong>@Name:</strong>
+            }
+            <!-- Field Value -->
             @if (Class == "description") {
                 <textarea placeholder="@Placeholder" @bind="@newValue" rows="4" cols="120"></textarea>
             } else {
                 <input placeholder="@Placeholder" @bind="@newValue"/>
+            }
+            <!-- Delete button (custom-fields only) -->
+            @if (Class == "custom-field") {
+                <button class="delete-custom-field">Remove</button>
             }
         </label>
     </div>
@@ -32,10 +42,12 @@
     private string showDisplay = "";
     private string showEditing = "hidden";
     private string newValue = "";
+    private string newName = "";
 
     protected override void OnInitialized()
     {
         newValue = Value;
+        newName = Name;
     }
 
     private void ToggleEditMode() {
@@ -44,11 +56,13 @@
     }
 
     private void SetValue() {
+        if ((newName != string.Empty) && (Class == "custom-field")) { Name = newName; }
         if (newValue != string.Empty) { Value = newValue; }
         ToggleEditMode();
     }
 
     private void CancelEdit() {
+        newName = Name;
         newValue = Value;
         ToggleEditMode();
     }
