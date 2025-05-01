@@ -21,11 +21,6 @@
 <div class="bookmark">
     <div class="bookmark-header">
         <Field Class="name" Name="Name" Value=@Name Placeholder="Website name..." />
-        @if (Tags.Any()) {
-            <div class="tags-container">
-                @foreach (var tag in Tags) { <span class="tag">@tag</span> }
-            </div>
-        }
     </div>
     <div class="bookmark-contents">
 
@@ -42,13 +37,6 @@
             }
             <button class="add-field">Add Field</button>
         </div>
-
-        <ul class="tags-list">
-            @foreach (var tag in Tags)
-            {  
-                <li>@tag</li>
-            }
-        </ul>
 
         <div class="template">
             <select class="custom-templates-selector" id="templatesSelector" value="@CustomTemplate">
