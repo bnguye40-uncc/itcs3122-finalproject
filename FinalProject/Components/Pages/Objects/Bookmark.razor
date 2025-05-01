@@ -3,23 +3,18 @@
 
 <!-- CSS -->
 <style>
-    .tags-list {
-        list-style: none;
-        padding-left: 0;
+    .bookmark-header {
         display: flex;
         flex-direction: row;
-        width: fit-content;
-        gap: 1em;
-        > li {
-            font-size: small;
-            border: solid 1px;
-            border-radius: 5px;
-            padding: 3px;
-        }
     }
-    .fields-list {
-        list-style: none;
-        padding-left: 0;
+    .tag {
+        margin: 0px .5em;
+        color: rgb(128,128,128);
+    }
+    .custom-field-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
     }
     .hidden {
         display: none;
@@ -30,6 +25,11 @@
 <div class="bookmark">
     <div class="bookmark-header">
         <Field Class="name" Name="Name" Value=@Name Placeholder="Website name..." />
+        @if (Tags.Any()) {
+            <div class="tags-container">
+                @foreach (var tag in Tags) { <span class="tag">@tag</span> }
+            </div>
+        }
     </div>
     <div class="bookmark-contents">
 
@@ -44,14 +44,8 @@
             {  
                 <Field Class="custom-field" Name="@field.Name" />
             }
+            <button class="add-field">Add Field</button>
         </div>
-
-        <ul class="tags-list">
-            @foreach (var tag in Tags)
-            {  
-                <li>@tag</li>
-            }
-        </ul>
 
         <div class="template">
             <select class="custom-templates-selector" id="templatesSelector" value="@CustomTemplate">

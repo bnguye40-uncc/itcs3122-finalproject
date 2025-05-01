@@ -7,16 +7,18 @@
 
     @if (isExpanded)
     {
-        foreach (var item in Items) {
-            if (item.IsFolder == true)
+        <ul>
+        @foreach (var item in Items) {
+            <li>
+            @if (item.IsFolder == true)
             {
                 <Folder Class="subfolder" Name="@item.Name" Description="@item.Description" />
             } else {
-                <div class="folder-bookmark-item">
-                    <NavLink href="/bookmark.html">@item.Name</NavLink>
-                </div>
+                <NavLink href="/bookmark">@item.Name</NavLink>
             }
+            </li>
         }
+        </ul>
     }
 </div>
 
