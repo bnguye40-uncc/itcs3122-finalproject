@@ -1,23 +1,36 @@
 ﻿@inherits LayoutComponentBase
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 @using FinalProject.Components.Pages.Objects
 
 <PageTitle>WebLibrary</PageTitle>
 
+<!-- Component -->
 <div class="page">
     <nav class="sidebar">
+
+        <!-- TEST LOCAL STORAGE -->
+            <div id="test">
+                <input @bind-value="@inputData" />
+
+                <button @onclick="StoreData">Store Data</button>
+                <button @onclick="RetrieveData">Retrieve Data</button>
+
+                <p>The retrieved data from the LocalStorage: @storedData </p>
+            </div>
+        <!-- TEST LOCAL STORAGE -->
+
         <div class="folder-organizer">
             <button class="add-bookmark">Add Bookmark</button>
             <button class="add-folder">Add Folder</button>
             <button class="delete-folder-item">Delete</button>
         </div>
-        <Folder Class="root"/>
+        <Folder Class="root" Name="Your Bookmarks" Items=@RootFolder/>
     </nav>
 
     <main>
         <div class="top-row px-4">
             <a href="https://github.com/bnguye40-uncc/itcs3122-finalproject" target="_blank">About this project.</a>
         </div>
-
         <article class="content px-4">
             <CascadingValue Value="@AllTemplates">
                 @Body
@@ -26,6 +39,32 @@
     </main>
 </div>
 
+<!-- C# -->
 @code {
     private List<Template> AllTemplates = new List<Template>();
+    private List<IFolderItem> RootFolder = new List<IFolderItem>();
+}
+
+<!-- TEST LOCAL STORAGE -->
+@code {
+    private const string dataKey = "localStorageKey";
+
+    private string? storedData;
+    private string? inputData;
+
+    private async Task StoreData()
+    {
+        if(!string.IsNullOrWhiteSpace(inputData))
+        {
+            await localStorage.SetItemAsync(dataKey, inputData);
+            inputData = "";
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender) { await RetrieveData(); }
+    }
+
+    private async Task RetrieveData() { storedData = await localStorage.GetItemAsync<string>(dataKey); }
 }

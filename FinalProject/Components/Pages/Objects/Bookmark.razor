@@ -1,5 +1,4 @@
 @page "/bookmark"
-@inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
 
 <!-- CSS -->
 <style>
@@ -57,11 +56,5 @@
 @code {
     [CascadingParameter]
     public List<Template>? AllTemplates { get; set; }
-    
-    protected override void OnInitialized()
-    {
-        localStorage.SetItem(Name, this);
-        var bookmark = localStorage.GetItem<Bookmark>(Name);
-    }
 
 }

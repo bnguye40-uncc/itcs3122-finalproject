@@ -1,5 +1,3 @@
-@inject Blazored.LocalStorage.ISyncLocalStorageService localStorage
-
 <div class="folder-container"> 
     <NavLink class="@($"folder {Class}")" @onclick="Expand">
         @Name
@@ -23,15 +21,6 @@
 </div>
 
 @code {
-    protected override void OnInitialized()
-    {   
-        localStorage.SetItem(Name, this);
-        var folder = localStorage.GetItem<Folder>(Name);
-
-        Items.Add(new Folder());
-        Items.Add(new Bookmark());
-    }
-
     private void Expand() {
         isExpanded = !isExpanded;
     }
