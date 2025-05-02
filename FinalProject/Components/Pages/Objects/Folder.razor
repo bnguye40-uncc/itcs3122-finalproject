@@ -1,5 +1,6 @@
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 
+<!-- CSS -->
 <style>
     .folder-items-list {
         padding: 0px;
@@ -11,9 +12,14 @@
         flex-direction: row;
         align-items: flex-start;
     }
+    
+    * .selected-True {
+        background-color: lightgray;
+    }
 </style>
 
-<span>
+<!-- Component -->
+<span class="folder-heading">
     <span class="display @showDisplay">
         <NavLink class="@($"folder {Class}")" @onclick="Expand">
             @Name
@@ -24,34 +30,36 @@
         <input placeholder="Folder Name..." @bind="@newName"/>
         <button @onclick="SetValue">Done</button>
     </span>
-    
     <button class="add-bookmark" @onclick="AddBookmark">ABM</button>
     <button class="add-folder" @onclick="AddFolder">AF</button>
 </span>
 
 <ul class="@($"folder-items-list {expandFolder}")">
 @foreach (var item in Items) {
-    <li class="folder-item">
-        @if (item.IsFolder == true)
-        {
-            <div class="subfolder-item-container">
-                <input type="checkbox" @bind-value="@item.IsSelected" >
-                <Folder Class="@($"selected-{item.IsSelected}")" Name="@item.Name" Description="@item.Description" />
-            </div>
-        }
-        else
-        {
-            <div class="bookmark-item-container">
-                <input type="checkbox" @bind-value="@item.IsSelected" >
-                <Bookmark Class="@($"{item.Class} selected-{item.IsSelected}")" Name="@item.Name" Description="@item.Description" DisplayAsFolderItem=true />
-            </div>
-        }
+    <li class="@($"item selected-{item.IsSelected}")">
+    @if (item.IsFolder == true)
+    {
+        <div>
+            <input type="checkbox" @bind-value="@item.IsSelected" >
+            <Folder Class="subfolder" Name="@item.Name" Description="@item.Description" />
+        </div>
+    }
+    else
+    {
+        <div>
+            <input type="checkbox" @bind-value="@item.IsSelected" >
+            <Bookmark Class="@item.Class" Name="@item.Name" Description="@item.Description" DisplayAsFolderItem=true />
+        </div>
+    }
     </li>
 }
 </ul>
 
+<!-- C# -->
 @code { 
-    
+    [CascadingParameter]
+    private List<IFolderItem>? RootFolder { get; set; }
+
     private string showDisplay = "";
     private string showEditing = "hidden";
     private string newName = "";
@@ -86,37 +94,9 @@
         showEditing = showEditing == string.Empty ? "hidden" : "";
     }
 
-    private async void SetValue() {
+    private void SetValue() {
         if (newName != string.Empty) { Name = newName; }
         else { Name = "Untitled"; }
-        await localStorage.SetItemAsync(dataKey, this);
         ToggleEditMode();
-    }
-
-    public void DeleteSelected() {
-        DeleteSelected(Items);
-    }
-
-    private void DeleteSelected(List<IFolderItem> folderItems) {
-        if (!folderItems.Any()) { return; }
-
-        folderItems.RemoveAll(item => item.IsSelected);
-        
-        for (int i = 0; i < folderItems.Count; i++) {
-            if (folderItems[i].IsFolder) {
-                ((Folder)folderItems[i]).DeleteSelected();
-            }
-        }
-    }
-    
-}
-
-@code {
-    private string dataKey = "";
-
-    protected override async Task OnInitializedAsync()
-    {
-        dataKey = $"Folder:{Name}";
-        var name = await localStorage.GetItemAsync<Folder>(dataKey);
     }
 }

@@ -14,11 +14,14 @@
     .hidden {
         display: none;
     }
+    * .selected-True {
+        background-color: lightgray;
+    }
 </style>
 
 <!-- Component -->
 @if (DisplayAsFolderItem) {
-    <span>
+    <span class="bookmark-item-heading">
         <span class="display @showDisplay">
             <NavLink class=@Class href="/bookmark">
                 @Name

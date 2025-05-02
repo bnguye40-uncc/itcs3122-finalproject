@@ -7,22 +7,12 @@
 <!-- Component -->
 <div class="page">
     <nav class="sidebar">
-
-        <!-- TEST LOCAL STORAGE -->
-            <!-- <div id="test">
-                <input @bind-value="@inputData" />
-
-                <button @onclick="StoreData">Store Data</button>
-                <button @onclick="RetrieveData">Retrieve Data</button>
-
-                <p>The retrieved data from the LocalStorage: @storedData </p>
-            </div> -->
-        <!-- TEST LOCAL STORAGE -->
-
         <div class="folder-manager">
             <button class="delete-selected" @onclick="DeleteSelected">Delete</button>
         </div>
-        <Folder @ref="rootFolderComponent" Class="root" Name="Your Bookmarks" Items=@RootFolder/>
+        <div class="root-folder-container">
+            <Folder @ref="rootFolderComponent" Class="root" Name="Your Bookmarks" Items=@RootFolder/>
+        </div>
     </nav>
 
     <main>
@@ -44,30 +34,6 @@
     private Folder rootFolderComponent;
 
     private void DeleteSelected() {
-        rootFolderComponent.DeleteSelected();
+        
     }
-}
-
-<!-- TEST LOCAL STORAGE -->
-@code {
-    private const string dataKey = "localStorageKey";
-
-    private string? storedData;
-    private string? inputData;
-
-    private async Task StoreData()
-    {
-        if(!string.IsNullOrWhiteSpace(inputData))
-        {
-            await localStorage.SetItemAsync(dataKey, inputData);
-            inputData = "";
-        }
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender) { await RetrieveData(); }
-    }
-
-    private async Task RetrieveData() { storedData = await localStorage.GetItemAsync<string>(dataKey); }
 }
