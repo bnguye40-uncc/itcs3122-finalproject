@@ -22,5 +22,7 @@ public partial class Bookmark : ComponentBase, IFolderItem
     public List<Field> CustomFields { get; set; } = new List<Field> { new Field(), new Field() };
     [Parameter]
     public bool IsSelected { get; set; } = false;
+    [Parameter]
+    public bool DisplayAsFolderItem { get; set; } = false;
     public bool IsFolder { get; } = false;
 }

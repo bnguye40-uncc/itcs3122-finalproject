@@ -22,7 +22,7 @@
         <div class="folder-manager">
             <button class="delete-selected" @onclick="DeleteSelected">Delete</button>
         </div>
-        <Folder Class="root" Name="Your Bookmarks" Items=@RootFolder/>
+        <Folder @ref="rootFolderComponent" Class="root" Name="Your Bookmarks" Items=@RootFolder/>
     </nav>
 
     <main>
@@ -41,10 +41,10 @@
 @code {
     private List<Template> AllTemplates = new List<Template>();
     private List<IFolderItem> RootFolder = new List<IFolderItem>();
+    private Folder rootFolderComponent;
 
     private void DeleteSelected() {
-        List<IFolderItem> unselected = RootFolder.FindAll(folderItem => folderItem.IsSelected == false);
-        RootFolder = unselected;
+        rootFolderComponent.DeleteSelected();
     }
 }
 

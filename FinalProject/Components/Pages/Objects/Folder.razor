@@ -1,3 +1,5 @@
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 <style>
     .folder-items-list {
         padding: 0px;
@@ -41,9 +43,7 @@
         {
             <div class="bookmark-item-container">
                 <input type="checkbox" @bind-value="@item.IsSelected" >
-                <NavLink class="@($"{item.Class} selected-{item.IsSelected}")" href="/bookmark">
-                    @item.Name
-                </NavLink>
+                <Bookmark Class="@($"{item.Class} selected-{item.IsSelected}")" Name="@item.Name" Description="@item.Description" DisplayAsFolderItem=true />
             </div>
         }
     </li>
@@ -86,10 +86,37 @@
         showEditing = showEditing == string.Empty ? "hidden" : "";
     }
 
-    private void SetValue() {
+    private async void SetValue() {
         if (newName != string.Empty) { Name = newName; }
         else { Name = "Untitled"; }
+        await localStorage.SetItemAsync(dataKey, this);
         ToggleEditMode();
     }
+
+    public void DeleteSelected() {
+        DeleteSelected(Items);
+    }
+
+    private void DeleteSelected(List<IFolderItem> folderItems) {
+        if (!folderItems.Any()) { return; }
+
+        folderItems.RemoveAll(item => item.IsSelected);
+        
+        for (int i = 0; i < folderItems.Count; i++) {
+            if (folderItems[i].IsFolder) {
+                ((Folder)folderItems[i]).DeleteSelected();
+            }
+        }
+    }
     
+}
+
+@code {
+    private string dataKey = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        dataKey = $"Folder:{Name}";
+        var name = await localStorage.GetItemAsync<Folder>(dataKey);
+    }
 }
