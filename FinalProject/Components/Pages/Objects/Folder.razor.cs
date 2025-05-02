@@ -2,17 +2,18 @@ using Microsoft.AspNetCore.Components;
 
 namespace FinalProject.Components.Pages.Objects;
 
-public partial class Folder : ComponentBase, IFolderItem
+[Serializable]
+public partial class Folder : AbstractFolderItem
 {
     [Parameter]
-    public string Class { get; set; } = "";
+    public override string Class { get; set; } = "";
     [Parameter]
-    public string Name { get; set; } = "Default Folder";
+    public override string Name { get; set; } = "Default Folder";
     [Parameter]
-    public string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    public override string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     [Parameter]
-    public List<IFolderItem> Items { get; set; } = new List<IFolderItem>();
+    public List<AbstractFolderItem> Items { get; set; } = new List<AbstractFolderItem>();
     [Parameter]
-    public bool IsSelected { get; set; } = false;
-    public bool IsFolder { get; } = true;
+    public override bool IsSelected { get; set; } = false;
+    public override bool IsFolder { get; set; } = true;
 }
