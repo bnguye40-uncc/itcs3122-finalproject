@@ -56,10 +56,7 @@
 </ul>
 
 <!-- C# -->
-@code { 
-    [CascadingParameter]
-    private List<IFolderItem>? RootFolder { get; set; }
-
+@code {
     private string showDisplay = "";
     private string showEditing = "hidden";
     private string newName = "";
@@ -94,6 +91,7 @@
         showEditing = showEditing == string.Empty ? "hidden" : "";
     }
 
+    // Set value after editing
     private void SetValue() {
         if (newName != string.Empty) { Name = newName; }
         else { Name = "Untitled"; }
