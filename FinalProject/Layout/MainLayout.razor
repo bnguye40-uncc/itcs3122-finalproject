@@ -16,22 +16,19 @@
     </nav>
 
     <main>
-        <div class="top-row px-4">
+        <header class="header">
             <a href="https://github.com/bnguye40-uncc/itcs3122-finalproject" target="_blank">About this project.</a>
-        </div>
-        <article class="content px-4">
-            <CascadingValue Value="@AllTemplates">
-                @Body
-            </CascadingValue>
+        </header>
+        <article class="content">
+            @Body
         </article>
     </main>
 </div>
 
 <!-- C# -->
 @code {
-    private List<Template> AllTemplates = new List<Template>();
     private List<IFolderItem> RootFolder = new List<IFolderItem>();
-    private Folder rootFolderComponent;
+    private Folder? rootFolderComponent;
 
     private void DeleteSelected() {
         

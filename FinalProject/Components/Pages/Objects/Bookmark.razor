@@ -56,27 +56,12 @@ else
                 <button class="add-field">Add Field</button>
             </div>
 
-            <div class="template">
-                <select class="custom-templates-selector" id="templatesSelector" value="@CustomTemplate">
-                    <option selected disabled>Choose Template</option>
-                    @if (AllTemplates.Any())
-                        @foreach (var template in AllTemplates)
-                        {
-                            <option value="@template">@template.Name</option>
-                        }
-                </select>
-                <button class="set-template-button">Set as Template</button>
-            </div>
-
         </div>
     </div>
 }
 
 <!-- C# -->
 @code {
-    [CascadingParameter]
-    public List<Template>? AllTemplates { get; set; }
-
     private string showDisplay = "";
     private string showEditing = "hidden";
     private string newName = "";
