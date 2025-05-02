@@ -19,10 +19,7 @@
             </div> -->
         <!-- TEST LOCAL STORAGE -->
 
-        <div class="folder-organizer">
-            <button class="add-bookmark" @onclick="AddBookmark">Add Bookmark</button>
-            <button class="add-folder" @onclick="AddFolder">Add Folder</button>
-            <button class="edit-selected">Edit</button>
+        <div class="folder-manager">
             <button class="delete-selected" @onclick="DeleteSelected">Delete</button>
         </div>
         <Folder Class="root" Name="Your Bookmarks" Items=@RootFolder/>
@@ -45,30 +42,9 @@
     private List<Template> AllTemplates = new List<Template>();
     private List<IFolderItem> RootFolder = new List<IFolderItem>();
 
-    private void AddBookmark() {
-        List<IFolderItem> selected = RootFolder.FindAll(folderItem => folderItem.IsSelected == true);
-        if (selected.Count < 1 ) {
-            RootFolder.Add(new Bookmark());
-            return;
-        }
-    }
-
-    private void AddFolder() {
-        List<IFolderItem> selected = RootFolder.FindAll(folderItem => folderItem.IsSelected == true);
-        if (selected.Count < 1) {
-            RootFolder.Add(new Folder());
-            return;
-        }
-        
-    }
-
     private void DeleteSelected() {
         List<IFolderItem> unselected = RootFolder.FindAll(folderItem => folderItem.IsSelected == false);
         RootFolder = unselected;
-    }
-
-    private void EditSelected() {
-        
     }
 }
 

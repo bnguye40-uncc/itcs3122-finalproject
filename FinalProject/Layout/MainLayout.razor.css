@@ -19,7 +19,7 @@
     min-width: 240px;
 }
 
-.folder-organizer {
+.folder-manager {
     display: flex;
     flex-direction: row;
 }

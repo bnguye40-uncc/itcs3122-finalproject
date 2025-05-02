@@ -1,8 +1,7 @@
 <style>
     .folder-items-list {
-        list-style-type: none;
         padding: 0px;
-        margin: 0px;
+        margin: 0px 0px 0px 1em;
     }
     
     .folder-item {
@@ -12,11 +11,23 @@
     }
 </style>
 
-<NavLink class="@($"folder {Class}")" @onclick="Expand">
-    @Name
-</NavLink>
+<span>
+    <span class="display @showDisplay">
+        <NavLink class="@($"folder {Class}")" @onclick="Expand">
+            @Name
+        </NavLink>
+        <button class="edit-folder-item" @onclick="ToggleEditMode">Edit</button>
+    </span>
+    <span class="editing @showEditing">
+        <input placeholder="Folder Name..." @bind="@newName"/>
+        <button @onclick="SetValue">Done</button>
+    </span>
+    
+    <button class="add-bookmark" @onclick="AddBookmark">ABM</button>
+    <button class="add-folder" @onclick="AddFolder">AF</button>
+</span>
 
-<ul class="@($"folder-items-list {hidden}")">
+<ul class="@($"folder-items-list {expandFolder}")">
 @foreach (var item in Items) {
     <li class="folder-item">
         @if (item.IsFolder == true)
@@ -40,13 +51,45 @@
 </ul>
 
 @code { 
-    // Expand folder
-    private bool isExpanded = true;
-    private string hidden = "";
     
-    private void Expand() {
-        isExpanded = !isExpanded;
-        hidden = isExpanded ? "" : "hidden";
+    private string showDisplay = "";
+    private string showEditing = "hidden";
+    private string newName = "";
+    private string expandFolder = "";
+    private bool isExpanded = true;
+
+    protected override void OnInitialized()
+    {
+        newName = Name;
     }
 
+    // Expand folder
+    private void Expand() {
+        if (Class == "root") { return; }
+        isExpanded = !isExpanded;
+        expandFolder = isExpanded ? "" : "hidden";
+    }
+
+    // Add bookmark
+    private void AddBookmark() {
+        Items.Add(new Bookmark());
+    }
+
+    // Add folder
+    private void AddFolder() {
+        Items.Add(new Folder());
+    }
+
+    // Toggle editing
+    private void ToggleEditMode() {
+        showDisplay = showDisplay == string.Empty ? "hidden" : "";
+        showEditing = showEditing == string.Empty ? "hidden" : "";
+    }
+
+    private void SetValue() {
+        if (newName != string.Empty) { Name = newName; }
+        else { Name = "Untitled"; }
+        ToggleEditMode();
+    }
+    
 }
