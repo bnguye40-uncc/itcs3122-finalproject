@@ -12,6 +12,7 @@ public partial class Folder : ComponentBase, IFolderItem
     public string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     [Parameter]
     public List<IFolderItem> Items { get; set; } = new List<IFolderItem>();
-    public bool isExpanded { get; set; } = false;
+    [Parameter]
+    public bool IsSelected { get; set; } = false;
     public bool IsFolder { get; } = true;
 }

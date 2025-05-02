@@ -9,20 +9,21 @@
     <nav class="sidebar">
 
         <!-- TEST LOCAL STORAGE -->
-            <div id="test">
+            <!-- <div id="test">
                 <input @bind-value="@inputData" />
 
                 <button @onclick="StoreData">Store Data</button>
                 <button @onclick="RetrieveData">Retrieve Data</button>
 
                 <p>The retrieved data from the LocalStorage: @storedData </p>
-            </div>
+            </div> -->
         <!-- TEST LOCAL STORAGE -->
 
         <div class="folder-organizer">
-            <button class="add-bookmark">Add Bookmark</button>
-            <button class="add-folder">Add Folder</button>
-            <button class="delete-folder-item">Delete</button>
+            <button class="add-bookmark" @onclick="AddBookmark">Add Bookmark</button>
+            <button class="add-folder" @onclick="AddFolder">Add Folder</button>
+            <button class="edit-selected">Edit</button>
+            <button class="delete-selected" @onclick="DeleteSelected">Delete</button>
         </div>
         <Folder Class="root" Name="Your Bookmarks" Items=@RootFolder/>
     </nav>
@@ -43,6 +44,32 @@
 @code {
     private List<Template> AllTemplates = new List<Template>();
     private List<IFolderItem> RootFolder = new List<IFolderItem>();
+
+    private void AddBookmark() {
+        List<IFolderItem> selected = RootFolder.FindAll(folderItem => folderItem.IsSelected == true);
+        if (selected.Count < 1 ) {
+            RootFolder.Add(new Bookmark());
+            return;
+        }
+    }
+
+    private void AddFolder() {
+        List<IFolderItem> selected = RootFolder.FindAll(folderItem => folderItem.IsSelected == true);
+        if (selected.Count < 1) {
+            RootFolder.Add(new Folder());
+            return;
+        }
+        
+    }
+
+    private void DeleteSelected() {
+        List<IFolderItem> unselected = RootFolder.FindAll(folderItem => folderItem.IsSelected == false);
+        RootFolder = unselected;
+    }
+
+    private void EditSelected() {
+        
+    }
 }
 
 <!-- TEST LOCAL STORAGE -->

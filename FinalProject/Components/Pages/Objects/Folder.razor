@@ -1,27 +1,52 @@
-<div class="folder-container"> 
-    <NavLink class="@($"folder {Class}")" @onclick="Expand">
-        @Name
-    </NavLink>
-
-    @if (isExpanded)
-    {
-        <ul>
-        @foreach (var item in Items) {
-            <li>
-            @if (item.IsFolder == true)
-            {
-                <Folder Class="subfolder" Name="@item.Name" Description="@item.Description" />
-            } else {
-                <NavLink href="/bookmark">@item.Name</NavLink>
-            }
-            </li>
-        }
-        </ul>
+<style>
+    .folder-items-list {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
     }
-</div>
+    
+    .folder-item {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+</style>
 
-@code {
+<NavLink class="@($"folder {Class}")" @onclick="Expand">
+    @Name
+</NavLink>
+
+<ul class="@($"folder-items-list {hidden}")">
+@foreach (var item in Items) {
+    <li class="folder-item">
+        @if (item.IsFolder == true)
+        {
+            <div class="subfolder-item-container">
+                <input type="checkbox" @bind-value="@item.IsSelected" >
+                <Folder Class="@($"selected-{item.IsSelected}")" Name="@item.Name" Description="@item.Description" />
+            </div>
+        }
+        else
+        {
+            <div class="bookmark-item-container">
+                <input type="checkbox" @bind-value="@item.IsSelected" >
+                <NavLink class="@($"{item.Class} selected-{item.IsSelected}")" href="/bookmark">
+                    @item.Name
+                </NavLink>
+            </div>
+        }
+    </li>
+}
+</ul>
+
+@code { 
+    // Expand folder
+    private bool isExpanded = true;
+    private string hidden = "";
+    
     private void Expand() {
         isExpanded = !isExpanded;
+        hidden = isExpanded ? "" : "hidden";
     }
+
 }

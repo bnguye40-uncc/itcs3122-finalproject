@@ -20,5 +20,7 @@ public partial class Bookmark : ComponentBase, IFolderItem
     public Template CustomTemplate { get; set; } = new Template();
     [Parameter]
     public List<Field> CustomFields { get; set; } = new List<Field> { new Field(), new Field() };
+    [Parameter]
+    public bool IsSelected { get; set; } = false;
     public bool IsFolder { get; } = false;
 }
