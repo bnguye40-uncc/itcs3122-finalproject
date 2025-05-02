@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace FinalProject.Components.Pages.Objects;
 
+[Serializable]
 public partial class Field : ComponentBase
 {
     // Used for CSS
