@@ -2,14 +2,15 @@ using Microsoft.AspNetCore.Components;
 
 namespace FinalProject.Components.Pages.Objects;
 
-public partial class Bookmark : ComponentBase, IFolderItem
+[Serializable]
+public partial class Bookmark : AbstractFolderItem
 {
     [Parameter]
-    public string Class { get; set; } = "bookmark";
+    public override string Class { get; set; } = "bookmark";
     [Parameter]
-    public string Name { get; set; } = "Default";
+    public override string Name { get; set; } = "Default";
     [Parameter]
-    public string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet quam at sem semper ultricies. Nunc orci justo, blandit non arcu at, auctor feugiat neque. Nunc vel dapibus leo, eget porttitor leo.";
+    public override string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet quam at sem semper ultricies. Nunc orci justo, blandit non arcu at, auctor feugiat neque. Nunc vel dapibus leo, eget porttitor leo.";
     [Parameter]
     public string URL { get; set; } = "https://docs.microsoft.com/aspnet/";
     [Parameter]
@@ -17,8 +18,8 @@ public partial class Bookmark : ComponentBase, IFolderItem
     [Parameter]
     public List<Field> CustomFields { get; set; } = new List<Field> { new Field(), new Field() };
     [Parameter]
-    public bool IsSelected { get; set; } = false;
+    public override bool IsSelected { get; set; } = false;
     [Parameter]
     public bool DisplayAsFolderItem { get; set; } = false;
-    public bool IsFolder { get; } = false;
+    public override bool IsFolder { get; set; } = false;
 }
