@@ -5,11 +5,10 @@ namespace FinalProject.Components.Pages.Objects;
 [Serializable]
 public partial class Field : ComponentBase
 {
-    // Used for CSS
+    [Parameter]
+    public int Index { get; set; } = -1;
     [Parameter]
     public string Class { get; set; } = "";
-
-    // Values
     [Parameter]
     public string Name { get; set; } = "Default Field";
     [Parameter]

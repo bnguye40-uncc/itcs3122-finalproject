@@ -42,14 +42,14 @@
     {
         <div>
             <input type="checkbox" @bind-value="@item.IsSelected" >
-            <Folder Class="subfolder" Name="@item.Name" Description="@item.Description" />
+            <Folder Class="subfolder" Name="@item.Name" />
         </div>
     }
     else
     {
         <div>
             <input type="checkbox" @bind-value="@item.IsSelected" >
-            <Bookmark Class="@item.Class" Name="@item.Name" Description="@item.Description" DisplayAsFolderItem=true />
+            <Bookmark Class="@item.Class" Name="@item.Name" DisplayAsFolderItem=true />
         </div>
     }
     </li>

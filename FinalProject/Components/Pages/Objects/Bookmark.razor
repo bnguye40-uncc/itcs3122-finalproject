@@ -1,4 +1,3 @@
-@page "/bookmark"
 @inherits AbstractFolderItem
 
 <!-- CSS -->
@@ -7,14 +6,17 @@
         display: flex;
         flex-direction: row;
     }
+
     .custom-field-container {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
     }
+
     .hidden {
         display: none;
     }
+
     * .selected-True {
         background-color: lightgray;
     }
@@ -24,7 +26,7 @@
 @if (DisplayAsFolderItem) {
     <span class="bookmark-item-heading">
         <span class="display @showDisplay">
-            <NavLink class=@Class href="/bookmark">
+            <NavLink class=@Class onClick="">
                 @Name
             </NavLink>
             <button class="edit-folder-item" @onclick="ToggleEditMode">Edit</button>
@@ -50,11 +52,15 @@ else
             <Field Class="description" Name="Description" Value=@Description Placeholder="Write a short description here..."/>
 
             <div class="custom-fields-list">
-                @foreach (var field in CustomFields)
+                @for (int i = 0; i < CustomFields.Count; i++)
                 {  
-                    <Field Class="custom-field" Name="@field.Name" />
+                    var index = i;
+                    <div class="custom-field-container">
+                        <Field Index="@index" Class="custom-field" Name="@CustomFields[index].Name" />
+                        <button @onclick="@(e => DeleteField(index))">X</button>
+                    </div>
                 }
-                <button class="add-field">Add Field</button>
+                <button class="add-field" @onclick="AddField">Add Field</button>
             </div>
 
         </div>
@@ -72,16 +78,24 @@ else
         newName = Name;
     }
 
-    // Toggle editing
+    // Toggle editing for folder item
     private void ToggleEditMode() {
         showDisplay = showDisplay == string.Empty ? "hidden" : "";
         showEditing = showEditing == string.Empty ? "hidden" : "";
     }
 
+    // Set name after editing finished.
     private void SetValue() {
         if (newName != string.Empty) { Name = newName; }
         else { Name = "Untitled"; }
         ToggleEditMode();
     }
 
+    private void AddField() {
+        CustomFields.Add(new Field());
+    }
+
+    private void DeleteField(int index) {
+        CustomFields.RemoveAt(index);
+    }
 }

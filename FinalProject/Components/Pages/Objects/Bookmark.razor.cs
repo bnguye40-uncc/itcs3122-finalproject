@@ -10,7 +10,7 @@ public partial class Bookmark : AbstractFolderItem
     [Parameter]
     public override string Name { get; set; } = "Default";
     [Parameter]
-    public override string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet quam at sem semper ultricies. Nunc orci justo, blandit non arcu at, auctor feugiat neque. Nunc vel dapibus leo, eget porttitor leo.";
+    public string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet quam at sem semper ultricies. Nunc orci justo, blandit non arcu at, auctor feugiat neque. Nunc vel dapibus leo, eget porttitor leo.";
     [Parameter]
     public string URL { get; set; } = "https://docs.microsoft.com/aspnet/";
     [Parameter]

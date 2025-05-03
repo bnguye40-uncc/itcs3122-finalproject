@@ -1,29 +1,39 @@
 ﻿@inherits LayoutComponentBase
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject NavigationManager _navManager
 @using FinalProject.Components.Pages.Objects
 
 <PageTitle>WebLibrary</PageTitle>
 
 <!-- Component -->
-<div class="page">
-    <nav class="sidebar">
-        <div class="folder-manager">
-            <button class="delete-selected" @onclick="DeleteSelected">Delete</button>
-        </div>
-        <div class="root-folder-container">
-            <Folder @ref="rootFolderComponent" Class="root" Name="Your Bookmarks" Items=@RootFolder/>
-        </div>
-    </nav>
+@if (_navManager.Uri.Contains("popup.html"))
+{
+    <div class="popup">
+        @Body
+    </div>
+}
+else
+{
+    <div class="page">
+        <nav class="sidebar">
+            <div class="folder-manager">
+                <button class="delete-selected" @onclick="DeleteSelected">Delete</button>
+            </div>
+            <div class="root-folder-container">
+                <Folder @ref="rootFolderComponent" Class="root" Name="Your Bookmarks" Items=@RootFolder/>
+            </div>
+        </nav>
 
-    <main>
-        <header class="header">
-            <a href="https://github.com/bnguye40-uncc/itcs3122-finalproject" target="_blank">About this project.</a>
-        </header>
-        <article class="content">
-            @Body
-        </article>
-    </main>
-</div>
+        <main>
+            <header class="header">
+                <a href="https://github.com/bnguye40-uncc/itcs3122-finalproject" target="_blank">About this project.</a>
+            </header>
+            <article class="content">
+                @Body
+            </article>
+        </main>
+    </div>
+}
 
 <!-- C# -->
 @code {

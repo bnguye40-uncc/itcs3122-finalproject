@@ -10,8 +10,6 @@ public partial class Folder : AbstractFolderItem
     [Parameter]
     public override string Name { get; set; } = "Default Folder";
     [Parameter]
-    public override string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-    [Parameter]
     public List<AbstractFolderItem> Items { get; set; } = new List<AbstractFolderItem>();
     [Parameter]
     public override bool IsSelected { get; set; } = false;
