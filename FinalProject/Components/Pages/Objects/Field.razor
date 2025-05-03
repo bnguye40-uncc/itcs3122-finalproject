@@ -32,34 +32,3 @@
     </div>
 
 </div>
-
-<!-- C# -->
-@code {
-    private string showDisplay = "";
-    private string showEditing = "hidden";
-    private string newValue = "";
-    private string newName = "";
-
-    protected override void OnInitialized()
-    {
-        newValue = Value;
-        newName = Name;
-    }
-
-    private void ToggleEditMode() {
-        showDisplay = showDisplay == string.Empty ? "hidden" : "";
-        showEditing = showEditing == string.Empty ? "hidden" : "";
-    }
-
-    private void SetValue() {
-        if ((newName != string.Empty) && (Class == "custom-field")) { Name = newName; }
-        if (newValue != string.Empty) { Value = newValue; }
-        ToggleEditMode();
-    }
-
-    private void CancelEdit() {
-        newName = Name;
-        newValue = Value;
-        ToggleEditMode();
-    }
-}

@@ -7,11 +7,9 @@
         padding: 0px;
         margin: 0px 0px 0px 1em;
     }
-    
-    .folder-item {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
+
+    .delete-item {
+        float: right;
     }
     
     * .selected-True {
@@ -36,66 +34,20 @@
 </span>
 
 <ul class="@($"folder-items-list {expandFolder}")">
-@foreach (var item in Items) {
-    <li class="@($"item selected-{item.IsSelected}")">
-    @if (item.IsFolder == true)
-    {
-        <div>
-            <input type="checkbox" @bind-value="@item.IsSelected" >
-            <Folder Class="subfolder" Name="@item.Name" />
+@for (int i = 0; i < Items.Count; i++) {
+
+    var index = i;
+
+    <li class="@($"item selected-{Items[index].IsSelected}")">
+        <div class="item-container">
+            <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
+            <span>@index</span>
+            @if (Items[index].IsFolder == true) {
+                <Folder Index="@index" Class="subfolder" Name="@Items[index].Name" />
+            } else {
+                <Bookmark Index="@index" Class="@Items[index].Class" Name="@Items[index].Name" DisplayAsFolderItem=true />
+            }
         </div>
-    }
-    else
-    {
-        <div>
-            <input type="checkbox" @bind-value="@item.IsSelected" >
-            <Bookmark Class="@item.Class" Name="@item.Name" DisplayAsFolderItem=true />
-        </div>
-    }
     </li>
 }
 </ul>
-
-<!-- C# -->
-@code {
-    private string showDisplay = "";
-    private string showEditing = "hidden";
-    private string newName = "";
-    private string expandFolder = "";
-    private bool isExpanded = true;
-
-    protected override void OnInitialized()
-    {
-        newName = Name;
-    }
-
-    // Expand folder
-    private void Expand() {
-        if (Class == "root") { return; }
-        isExpanded = !isExpanded;
-        expandFolder = isExpanded ? "" : "hidden";
-    }
-
-    // Add bookmark
-    private void AddBookmark() {
-        Items.Add(new Bookmark());
-    }
-
-    // Add folder
-    private void AddFolder() {
-        Items.Add(new Folder());
-    }
-
-    // Toggle editing
-    private void ToggleEditMode() {
-        showDisplay = showDisplay == string.Empty ? "hidden" : "";
-        showEditing = showEditing == string.Empty ? "hidden" : "";
-    }
-
-    // Set value after editing
-    private void SetValue() {
-        if (newName != string.Empty) { Name = newName; }
-        else { Name = "Untitled"; }
-        ToggleEditMode();
-    }
-}

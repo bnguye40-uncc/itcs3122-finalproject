@@ -52,12 +52,13 @@ else
             <Field Class="description" Name="Description" Value=@Description Placeholder="Write a short description here..."/>
 
             <div class="custom-fields-list">
-                @for (int i = 0; i < CustomFields.Count; i++)
-                {  
+                @for (int i = 0; i < CustomFields.Count; i++) {  
+                    
                     var index = i;
-                    <div class="custom-field-container">
-                        <Field Index="@index" Class="custom-field" Name="@CustomFields[index].Name" />
-                        <button @onclick="@(e => DeleteField(index))">X</button>
+
+                    <div @key="CustomFields[index]" class="custom-field-container">
+                        <Field Index="@index" Class="custom-field" @bind-Name="CustomFields[index].Name" @bind-Value="CustomFields[index].Value" />
+                        <button class="delete-field" @onclick="@(e => DeleteField(index))">X</button>
                     </div>
                 }
                 <button class="add-field" @onclick="AddField">Add Field</button>
@@ -65,37 +66,4 @@ else
 
         </div>
     </div>
-}
-
-<!-- C# -->
-@code {
-    private string showDisplay = "";
-    private string showEditing = "hidden";
-    private string newName = "";
-
-    protected override void OnInitialized()
-    {
-        newName = Name;
-    }
-
-    // Toggle editing for folder item
-    private void ToggleEditMode() {
-        showDisplay = showDisplay == string.Empty ? "hidden" : "";
-        showEditing = showEditing == string.Empty ? "hidden" : "";
-    }
-
-    // Set name after editing finished.
-    private void SetValue() {
-        if (newName != string.Empty) { Name = newName; }
-        else { Name = "Untitled"; }
-        ToggleEditMode();
-    }
-
-    private void AddField() {
-        CustomFields.Add(new Field());
-    }
-
-    private void DeleteField(int index) {
-        CustomFields.RemoveAt(index);
-    }
 }

@@ -16,9 +16,6 @@ else
 {
     <div class="page">
         <nav class="sidebar">
-            <div class="folder-manager">
-                <button class="delete-selected" @onclick="DeleteSelected">Delete</button>
-            </div>
             <div class="root-folder-container">
                 <Folder @ref="rootFolderComponent" Class="root" Name="Your Bookmarks" Items=@RootFolder/>
             </div>
@@ -39,8 +36,4 @@ else
 @code {
     private List<AbstractFolderItem> RootFolder = new List<AbstractFolderItem>();
     private Folder? rootFolderComponent;
-
-    private void DeleteSelected() {
-        
-    }
 }
