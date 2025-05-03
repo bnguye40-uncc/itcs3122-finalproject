@@ -16,23 +16,17 @@ public partial class Folder : AbstractFolderItem
     private string expandFolder = "";
     private bool isExpanded = true;
 
-    protected override void OnInitialized()
-    {
-        newName = Name;
-    }
+    // Component functions
+    protected override void OnInitialized() { newName = Name; }
+
+    private void AddBookmark() { Items.Add(new Bookmark()); }
+
+    private void AddFolder() { Items.Add(new Folder()); }
 
     private void Expand() {
         if (Class == "root") { return; }
         isExpanded = !isExpanded;
         expandFolder = isExpanded ? "" : "hidden";
-    }
-
-    private void AddBookmark() {
-        Items.Add(new Bookmark());
-    }
-
-    private void AddFolder() {
-        Items.Add(new Folder());
     }
 
     private async void DeleteItem(int index) {
