@@ -13,9 +13,6 @@ public partial class Folder : AbstractFolderItem
     public override bool IsFolder { get; set; } = true;
 
     // Variables
-    private string showDisplay = "";
-    private string showEditing = "hidden";
-    private string newName = "";
     private string expandFolder = "";
     private bool isExpanded = true;
 
@@ -38,18 +35,11 @@ public partial class Folder : AbstractFolderItem
         Items.Add(new Folder());
     }
 
-    private void ToggleEditMode() {
-        showDisplay = showDisplay == string.Empty ? "hidden" : "";
-        showEditing = showEditing == string.Empty ? "hidden" : "";
+    private async void DeleteItem(int index) {
+        Items.Remove(Items[index]);
+        await ItemsChanged.InvokeAsync(Items);
     }
 
-    private void SetValue() {
-        if (newName != string.Empty) { Name = newName; }
-        else { Name = "Untitled"; }
-        ToggleEditMode();
-    }
-
-    private void DeleteItem(int index) {
-        Items.RemoveAt(index);
-    }
+    // Two-way binding
+    [Parameter] public virtual EventCallback<List<AbstractFolderItem>> ItemsChanged { get; set; }
 }

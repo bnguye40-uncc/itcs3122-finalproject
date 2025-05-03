@@ -39,13 +39,13 @@
     var index = i;
 
     <li class="@($"item selected-{Items[index].IsSelected}")">
-        <div class="item-container">
+        <div @key="Items[index]" class="item-container">
             <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
             <span>@index</span>
             @if (Items[index].IsFolder == true) {
-                <Folder Index="@index" Class="subfolder" Name="@Items[index].Name" />
+                <Folder Class="subfolder" @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
             } else {
-                <Bookmark Index="@index" Class="@Items[index].Class" Name="@Items[index].Name" DisplayAsFolderItem=true />
+                <Bookmark Class="bookmark-item" @bind-Name="Items[index].Name" DisplayAsFolderItem=true />
             }
         </div>
     </li>

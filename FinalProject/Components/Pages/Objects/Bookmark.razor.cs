@@ -14,27 +14,13 @@ public partial class Bookmark : AbstractFolderItem
     [Parameter] public List<Field> CustomFields { get; set; } = new List<Field> { new Field(), new Field() };
     [Parameter] public override bool IsSelected { get; set; } = false;
     [Parameter] public bool DisplayAsFolderItem { get; set; } = false;
-    public override bool IsFolder { get; set; } = false;
 
     // Variables
-    private string showDisplay = "";
-    private string showEditing = "hidden";
-    private string newName = "";
+    public override bool IsFolder { get; set; } = false;
 
     protected override void OnInitialized()
     {
         newName = Name;
-    }
-
-    private void ToggleEditMode() {
-        showDisplay = showDisplay == string.Empty ? "hidden" : "";
-        showEditing = showEditing == string.Empty ? "hidden" : "";
-    }
-
-    private void SetValue() {
-        if (newName != string.Empty) { Name = newName; }
-        else { Name = "Untitled"; }
-        ToggleEditMode();
     }
 
     private void AddField() {

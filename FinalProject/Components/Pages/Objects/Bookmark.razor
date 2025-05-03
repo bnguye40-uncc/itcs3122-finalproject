@@ -57,7 +57,7 @@ else
                     var index = i;
 
                     <div @key="CustomFields[index]" class="custom-field-container">
-                        <Field Index="@index" Class="custom-field" @bind-Name="CustomFields[index].Name" @bind-Value="CustomFields[index].Value" />
+                        <Field Class="custom-field" @bind-Name="CustomFields[index].Name" @bind-Value="CustomFields[index].Value" />
                         <button class="delete-field" @onclick="@(e => DeleteField(index))">X</button>
                     </div>
                 }
