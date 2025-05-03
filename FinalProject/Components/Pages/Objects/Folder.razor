@@ -8,6 +8,11 @@
         margin: 0px 0px 0px 1em;
     }
 
+    .item:hover {
+        background-color: lightgray;
+        border: solid 1px darkgray;
+    }
+
     .delete-item {
         float: right;
     }
@@ -41,7 +46,6 @@
     <li class="@($"item selected-{Items[index].IsSelected}")">
         <div @key="Items[index]" class="item-container">
             <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
-            <span>@index</span>
             @if (Items[index].IsFolder == true) {
                 <Folder Class="subfolder" @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
             } else {
