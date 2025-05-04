@@ -44,5 +44,5 @@ public partial class Folder : AbstractFolderItem
     }
 
     // Two-way binding
-    [Parameter] public virtual EventCallback<List<AbstractFolderItem>> ItemsChanged { get; set; }
+    [Parameter] public EventCallback<List<AbstractFolderItem>> ItemsChanged { get; set; }
 }

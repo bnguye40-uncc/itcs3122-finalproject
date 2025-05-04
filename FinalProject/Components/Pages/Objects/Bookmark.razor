@@ -1,3 +1,5 @@
+@page "/bookmark"
+
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @inherits AbstractFolderItem
 
@@ -23,7 +25,7 @@
 @if (DisplayAsFolderItem) {
     <span class="bookmark-item-heading">
         <span class="display @showDisplay">
-            <NavLink class=@Class onClick="">
+            <NavLink class=@Class href="@($"bookmark/{Name}")">
                 @Name
             </NavLink>
             <button class="edit-folder-item" @onclick="ToggleEditMode">Edit</button>
@@ -38,15 +40,15 @@ else
 {
     <div class="bookmark">
         <div class="bookmark-header">
-            <Field Class="name" Name="Name" Value=@Name Placeholder="Website name..." />
+            <Field Class="name" Name="Name" Placeholder="Website name..." @bind-Value="Name" />
         </div>
         <div class="bookmark-contents">
 
-            <Field Class="url" Name="URL" Value=@URL Placeholder="Paste URL here..." />
+            <Field Class="url" Name="URL" Placeholder="Paste URL here..." @bind-Value="URL" />
 
-            <Field Class="keyword" Name="Keyword" Value=@Keyword Placeholder="Add a keyword..."/>
+            <Field Class="keyword" Name="Keyword" Placeholder="Add a keyword..." @bind-Value="Keyword" />
 
-            <Field Class="description" Name="Description" Value=@Description Placeholder="Write a short description here..."/>
+            <Field Class="description" Name="Description" Placeholder="Write a short description here..." @bind-Value="Description" />
 
             <div class="custom-fields-list">
                 @for (int i = 0; i < CustomFields.Count; i++) {  
