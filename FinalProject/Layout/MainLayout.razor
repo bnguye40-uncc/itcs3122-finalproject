@@ -35,5 +35,16 @@ else
 <!-- C# -->
 @code {
     private List<AbstractFolderItem> RootFolder = new List<AbstractFolderItem>();
+    private List<AbstractFolderItem> test = new List<AbstractFolderItem> {
+        new Bookmark(),
+        new Folder()
+    };
     private Folder? rootFolderComponent;
+
+    protected override async Task OnInitializedAsync()
+    {
+        string rootFolderKey = "root-folder";
+        await localStorage.SetItemAsync<List<AbstractFolderItem>>(rootFolderKey, test);
+        RootFolder = await localStorage.GetItemAsync<List<AbstractFolderItem>>(rootFolderKey);
+    }
 }

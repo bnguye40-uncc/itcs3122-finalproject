@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Components;
+using System.Text.Json.Serialization;
 using System.Text.Json;
 
 namespace FinalProject.Components.Pages.Objects;
 
 [Serializable]
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
+[JsonDerivedType(typeof(Folder), "folder")]
+[JsonDerivedType(typeof(Bookmark), "bookmark")]
 public abstract class AbstractFolderItem : ComponentBase {
     // Virtual parameters
     [Parameter] public virtual string Class { get; set; } = "";
