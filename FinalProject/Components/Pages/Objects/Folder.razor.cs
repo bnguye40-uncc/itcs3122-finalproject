@@ -1,10 +1,14 @@
 using Microsoft.AspNetCore.Components;
+using FinalProject.Layout;
 
 namespace FinalProject.Components.Pages.Objects;
 
 [Serializable]
 public partial class Folder : AbstractFolderItem
 {
+    // Cascading Parameters
+    [CascadingParameter] public MainLayout _Parent { get; set; }
+    
     // Parameters
     [Parameter] public override string Class { get; set; } = "folder";
     [Parameter] public override string Name { get; set; } = "Default Folder";
@@ -17,9 +21,15 @@ public partial class Folder : AbstractFolderItem
     private bool isExpanded = true;
 
     // Component functions
-    private void AddBookmark() { Items.Add(new Bookmark()); }
+    private void AddBookmark() {
+        Items.Add(new Bookmark());
+        _Parent.RefreshState();
+    }
 
-    private void AddFolder() { Items.Add(new Folder()); }
+    private void AddFolder() {
+        Items.Add(new Folder());
+        _Parent.RefreshState();
+    }
 
     private void Expand() {
         if (Class == "root") { return; }
@@ -30,6 +40,7 @@ public partial class Folder : AbstractFolderItem
     private async void DeleteItem(int index) {
         Items.Remove(Items[index]);
         await ItemsChanged.InvokeAsync(Items);
+        _Parent.RefreshState();
     }
 
     // Two-way binding

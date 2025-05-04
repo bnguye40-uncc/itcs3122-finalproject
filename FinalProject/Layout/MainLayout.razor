@@ -17,7 +17,9 @@ else
     <div class="page">
         <nav class="sidebar">
             <div class="root-folder-container">
-                <Folder @ref="rootFolderComponent" Class="root" Name="Your Bookmarks" Items=@RootFolder/>
+                <CascadingValue Value="this">
+                    <Folder @ref="rootFolderComponent" Class="root" Name="Your Bookmarks" Items=@RootFolder/>
+                </CascadingValue>
             </div>
         </nav>
 
@@ -35,16 +37,20 @@ else
 <!-- C# -->
 @code {
     private List<AbstractFolderItem> RootFolder = new List<AbstractFolderItem>();
-    private List<AbstractFolderItem> test = new List<AbstractFolderItem> {
-        new Bookmark(),
-        new Folder()
-    };
     private Folder? rootFolderComponent;
+    public string rootFolderKey = "root-folder";
 
     protected override async Task OnInitializedAsync()
     {
-        string rootFolderKey = "root-folder";
-        await localStorage.SetItemAsync<List<AbstractFolderItem>>(rootFolderKey, test);
-        RootFolder = await localStorage.GetItemAsync<List<AbstractFolderItem>>(rootFolderKey);
+        if (await localStorage.ContainKeyAsync(rootFolderKey)) {
+            RootFolder = await localStorage.GetItemAsync<List<AbstractFolderItem>>(rootFolderKey);
+        } else {
+            await localStorage.SetItemAsync<List<AbstractFolderItem>>(rootFolderKey, RootFolder);
+        }   
+    }
+
+    public async void RefreshState() {
+        this.StateHasChanged();
+        await localStorage.SetItemAsync<List<AbstractFolderItem>>(rootFolderKey, RootFolder);
     }
 }
