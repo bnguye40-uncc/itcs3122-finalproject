@@ -45,14 +45,7 @@
             @if (Items[index].IsFolder == true) {
                 <Folder @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
             } else {
-                <Bookmark
-                    @bind-Name="Items[index].Name"
-                    @bind-Description="((Bookmark)Items[index]).Description"
-                    @bind-URL="((Bookmark)Items[index]).URL"
-                    @bind-Keyword="((Bookmark)Items[index]).Keyword"
-                    @bind-CustomFields="((Bookmark)Items[index]).CustomFields"
-                    DisplayAsFolderItem=true
-                />
+                <Bookmark @bind-Name="Items[index].Name" DisplayAsFolderItem=true />
             }
         </div>
     </li>

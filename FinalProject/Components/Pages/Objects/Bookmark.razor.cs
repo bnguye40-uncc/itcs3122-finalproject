@@ -20,10 +20,4 @@ public partial class Bookmark : AbstractFolderItem
     private void AddField() { CustomFields.Add(new Field()); }
 
     private void DeleteField(int index) { CustomFields.Remove(CustomFields[index]); }
-
-    // Two-way binding
-    [Parameter] public EventCallback<string> DescriptionChanged { get; set; }
-    [Parameter] public EventCallback<string> URLChanged { get; set; }
-    [Parameter] public EventCallback<string> KeywordChanged { get; set; }
-    [Parameter] public EventCallback<List<Field>> CustomFieldsChanged { get; set; }
 }
