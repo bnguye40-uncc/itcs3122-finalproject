@@ -7,7 +7,7 @@ namespace FinalProject.Components.Pages.Objects;
 public partial class Folder : AbstractFolderItem
 {
     // Cascading Parameters
-    [CascadingParameter] public MainLayout _Parent { get; set; }
+    [CascadingParameter] public MainLayout _RootFolder { get; set; }
     
     // Parameters
     [Parameter] public override string Class { get; set; } = "folder";
@@ -23,12 +23,12 @@ public partial class Folder : AbstractFolderItem
     // Component functions
     private void AddBookmark() {
         Items.Add(new Bookmark());
-        _Parent.RefreshState();
+        _RootFolder.UpdateLocalStorage();
     }
 
     private void AddFolder() {
         Items.Add(new Folder());
-        _Parent.RefreshState();
+        _RootFolder.UpdateLocalStorage();
     }
 
     private void Expand() {
@@ -40,7 +40,7 @@ public partial class Folder : AbstractFolderItem
     private async void DeleteItem(int index) {
         Items.Remove(Items[index]);
         await ItemsChanged.InvokeAsync(Items);
-        _Parent.RefreshState();
+        _RootFolder.UpdateLocalStorage();
     }
 
     // Two-way binding

@@ -49,8 +49,7 @@ else
         }   
     }
 
-    public async void RefreshState() {
-        this.StateHasChanged();
+    public async void UpdateLocalStorage() {
         await localStorage.SetItemAsync<List<AbstractFolderItem>>(rootFolderKey, RootFolder);
     }
 }
