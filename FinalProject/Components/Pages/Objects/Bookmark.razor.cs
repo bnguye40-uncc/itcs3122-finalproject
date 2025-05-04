@@ -19,8 +19,6 @@ public partial class Bookmark : AbstractFolderItem
     public override bool IsFolder { get; set; } = false;
 
     // Component functions
-    protected override void OnInitialized() { newName = Name; }
-
     private void AddField() { CustomFields.Add(new Field()); }
 
     private void DeleteField(int index) { CustomFields.Remove(CustomFields[index]); }

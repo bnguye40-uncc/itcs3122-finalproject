@@ -6,7 +6,7 @@ namespace FinalProject.Components.Pages.Objects;
 public partial class Folder : AbstractFolderItem
 {
     // Parameters
-    [Parameter] public override string Class { get; set; } = "";
+    [Parameter] public override string Class { get; set; } = "folder";
     [Parameter] public override string Name { get; set; } = "Default Folder";
     [Parameter] public List<AbstractFolderItem> Items { get; set; } = new List<AbstractFolderItem>();
     [Parameter] public override bool IsSelected { get; set; } = false;
@@ -17,8 +17,6 @@ public partial class Folder : AbstractFolderItem
     private bool isExpanded = true;
 
     // Component functions
-    protected override void OnInitialized() { newName = Name; }
-
     private void AddBookmark() { Items.Add(new Bookmark()); }
 
     private void AddFolder() { Items.Add(new Folder()); }

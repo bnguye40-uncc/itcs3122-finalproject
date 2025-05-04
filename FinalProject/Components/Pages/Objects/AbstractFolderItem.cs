@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Components;
+using System.Text.Json;
 
 namespace FinalProject.Components.Pages.Objects;
 
@@ -9,11 +10,17 @@ public abstract class AbstractFolderItem : ComponentBase {
     [Parameter] public virtual string Name { get; set; } = "";
     [Parameter] public virtual bool IsSelected { get; set; }
     [Parameter] public virtual bool IsFolder { get; set; } 
+    [Parameter] public virtual string Key { get; set; } = "";       // Used for local storage
 
-    // Abstract variables
+    // Virtual variables
     public virtual string showDisplay { get; set; } = "";
     public virtual string showEditing { get; set; } = "hidden";
     public virtual string newName { get; set; } = "";
+
+    // Virtual component functions
+    protected override void OnInitialized() {
+        newName = Name;
+    }
 
     public virtual void ToggleEditMode() {
         showDisplay = showDisplay == string.Empty ? "hidden" : "";

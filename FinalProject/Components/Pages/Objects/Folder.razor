@@ -16,16 +16,12 @@
     .delete-item {
         float: right;
     }
-    
-    * .selected-True {
-        background-color: lightgray;
-    }
 </style>
 
 <!-- Component -->
 <span class="folder-heading">
     <span class="display @showDisplay">
-        <NavLink class="@($"folder {Class}")" @onclick="Expand">
+        <NavLink class="@($"{Class}")" @onclick="Expand">
             @Name
         </NavLink>
         <button class="edit-folder-item" @onclick="ToggleEditMode">Edit</button>
@@ -43,13 +39,13 @@
 
     var index = i;
 
-    <li class="@($"item selected-{Items[index].IsSelected}")">
+    <li class="@($"item")">
         <div @key="Items[index]" class="item-container">
             <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
             @if (Items[index].IsFolder == true) {
-                <Folder Class="subfolder" @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
+                <Folder @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
             } else {
-                <Bookmark Class="bookmark-item" @bind-Name="Items[index].Name" DisplayAsFolderItem=true />
+                <Bookmark @bind-Name="Items[index].Name" DisplayAsFolderItem=true />
             }
         </div>
     </li>
