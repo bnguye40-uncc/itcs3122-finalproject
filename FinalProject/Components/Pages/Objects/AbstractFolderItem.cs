@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using FinalProject.Layout;
 
 namespace FinalProject.Components.Pages.Objects;
 
@@ -9,6 +10,9 @@ namespace FinalProject.Components.Pages.Objects;
 [JsonDerivedType(typeof(Folder), "folder")]
 [JsonDerivedType(typeof(Bookmark), "bookmark")]
 public abstract class AbstractFolderItem : ComponentBase {
+    // Cascading Parameters
+    [CascadingParameter] public virtual MainLayout _RootFolder { get; set; }
+
     // Virtual parameters
     [Parameter] public virtual string Class { get; set; } = "";
     [Parameter] public virtual string Name { get; set; } = "";
@@ -36,6 +40,7 @@ public abstract class AbstractFolderItem : ComponentBase {
         else { Name = "Untitled"; }
         ToggleEditMode();
         await NameChanged.InvokeAsync(Name);
+        _RootFolder.UpdateLocalStorage();
     }
 
     // Two-way binding

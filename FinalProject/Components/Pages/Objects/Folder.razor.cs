@@ -6,9 +6,6 @@ namespace FinalProject.Components.Pages.Objects;
 [Serializable]
 public partial class Folder : AbstractFolderItem
 {
-    // Cascading Parameters
-    [CascadingParameter] public MainLayout _RootFolder { get; set; }
-    
     // Parameters
     [Parameter] public override string Class { get; set; } = "folder";
     [Parameter] public override string Name { get; set; } = "Default Folder";

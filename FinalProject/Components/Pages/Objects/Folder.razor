@@ -42,11 +42,13 @@
     <li class="@($"item")">
         <div @key="Items[index]" class="item-container">
             <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
-            @if (Items[index].IsFolder == true) {
-                <Folder @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
-            } else {
-                <Bookmark @bind-Name="Items[index].Name" DisplayAsFolderItem=true />
-            }
+            <CascadingValue Value="_RootFolder">
+                @if (Items[index].IsFolder == true) {
+                    <Folder @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
+                } else {
+                    <Bookmark @bind-Name="Items[index].Name" DisplayAsFolderItem=true />
+                }
+            </CascadingValue>
         </div>
     </li>
 }

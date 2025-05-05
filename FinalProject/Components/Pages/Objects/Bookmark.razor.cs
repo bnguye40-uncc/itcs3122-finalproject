@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Components;
+using FinalProject.Layout;
 
 namespace FinalProject.Components.Pages.Objects;
 
 [Serializable]
 public partial class Bookmark : AbstractFolderItem
-{
+{ 
     // Parameters
     [Parameter] public override string Class { get; set; } = "bookmark";
     [Parameter] public override string Name { get; set; } = "Default";
@@ -17,7 +18,13 @@ public partial class Bookmark : AbstractFolderItem
     [Parameter] public override bool IsFolder { get; set; } = false;
 
     // Component functions
-    private void AddField() { CustomFields.Add(new Field()); }
+    private void AddField() {
+        CustomFields.Add(new Field());
+        _RootFolder.UpdateLocalStorage();
+    }
 
-    private void DeleteField(int index) { CustomFields.Remove(CustomFields[index]); }
+    private void DeleteField(int index) {
+        CustomFields.Remove(CustomFields[index]);
+        _RootFolder.UpdateLocalStorage();
+    }
 }
