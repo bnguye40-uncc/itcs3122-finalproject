@@ -9,6 +9,7 @@ namespace FinalProject.Components.Pages.Objects;
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
 [JsonDerivedType(typeof(Folder), "folder")]
 [JsonDerivedType(typeof(Bookmark), "bookmark")]
+[JsonDerivedType(typeof(BookmarkFolderItem), "bookmark-folder-item")]
 public abstract class AbstractFolderItem : ComponentBase {
     // Cascading Parameters
     [CascadingParameter] public virtual MainLayout _MainLayout { get; set; }
