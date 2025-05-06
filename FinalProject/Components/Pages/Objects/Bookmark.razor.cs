@@ -20,11 +20,11 @@ public partial class Bookmark : AbstractFolderItem
     // Component functions
     private void AddField() {
         CustomFields.Add(new Field());
-        _RootFolder.UpdateLocalStorage();
+        _MainLayout.UpdateLocalStorage();
     }
 
     private void DeleteField(int index) {
         CustomFields.Remove(CustomFields[index]);
-        _RootFolder.UpdateLocalStorage();
+        _MainLayout.UpdateLocalStorage();
     }
 }

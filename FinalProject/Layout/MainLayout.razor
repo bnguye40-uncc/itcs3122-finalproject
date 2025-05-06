@@ -18,7 +18,7 @@ else
         <nav class="sidebar">
             <div class="root-folder-container">
                 <CascadingValue Value="this">
-                    <Folder @ref="rootFolderComponent" Class="root" Name="Your Bookmarks" Items=@RootFolder/>
+                    <Folder Class="root" Name="Your Bookmarks" Items=@RootFolder/>
                 </CascadingValue>
             </div>
         </nav>
@@ -28,7 +28,9 @@ else
                 <a href="https://github.com/bnguye40-uncc/itcs3122-finalproject" target="_blank">About this project.</a>
             </header>
             <article class="content">
-                @Body
+                <CascadingValue Value="this">
+                    @Body
+                </CascadingValue>
             </article>
         </main>
     </div>
@@ -37,7 +39,6 @@ else
 <!-- C# -->
 @code {
     private List<AbstractFolderItem> RootFolder = new List<AbstractFolderItem>();
-    private Folder? rootFolderComponent;
     public string rootFolderKey = "root-folder";
 
     protected override async Task OnInitializedAsync()

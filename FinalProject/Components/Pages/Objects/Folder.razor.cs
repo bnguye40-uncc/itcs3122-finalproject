@@ -20,12 +20,12 @@ public partial class Folder : AbstractFolderItem
     // Component functions
     private void AddBookmark() {
         Items.Add(new Bookmark());
-        _RootFolder.UpdateLocalStorage();
+        _MainLayout.UpdateLocalStorage();
     }
 
     private void AddFolder() {
         Items.Add(new Folder());
-        _RootFolder.UpdateLocalStorage();
+        _MainLayout.UpdateLocalStorage();
     }
 
     private void Expand() {
@@ -37,7 +37,7 @@ public partial class Folder : AbstractFolderItem
     private async void DeleteItem(int index) {
         Items.Remove(Items[index]);
         await ItemsChanged.InvokeAsync(Items);
-        _RootFolder.UpdateLocalStorage();
+        _MainLayout.UpdateLocalStorage();
     }
 
     // Two-way binding

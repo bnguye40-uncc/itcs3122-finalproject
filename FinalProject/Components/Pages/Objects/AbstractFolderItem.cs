@@ -11,7 +11,7 @@ namespace FinalProject.Components.Pages.Objects;
 [JsonDerivedType(typeof(Bookmark), "bookmark")]
 public abstract class AbstractFolderItem : ComponentBase {
     // Cascading Parameters
-    [CascadingParameter] public virtual MainLayout _RootFolder { get; set; }
+    [CascadingParameter] public virtual MainLayout _MainLayout { get; set; }
 
     // Virtual parameters
     [Parameter] public virtual string Class { get; set; } = "";
@@ -40,7 +40,7 @@ public abstract class AbstractFolderItem : ComponentBase {
         else { Name = "Untitled"; }
         ToggleEditMode();
         await NameChanged.InvokeAsync(Name);
-        _RootFolder.UpdateLocalStorage();
+        _MainLayout.UpdateLocalStorage();
     }
 
     // Two-way binding

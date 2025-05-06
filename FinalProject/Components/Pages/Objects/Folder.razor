@@ -42,7 +42,7 @@
     <li class="@($"item")">
         <div @key="Items[index]" class="item-container">
             <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
-            <CascadingValue Value="_RootFolder">
+            <CascadingValue Value="_MainLayout">
                 @if (Items[index].IsFolder == true) {
                     <Folder @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
                 } else {
