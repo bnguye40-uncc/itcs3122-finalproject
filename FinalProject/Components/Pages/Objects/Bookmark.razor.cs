@@ -13,9 +13,7 @@ public partial class Bookmark : AbstractFolderItem
     [Parameter] public string URL { get; set; } = "https://docs.microsoft.com/aspnet/";
     [Parameter] public string Keyword { get; set; } = "keyword";
     [Parameter] public List<Field> CustomFields { get; set; } = new List<Field> { new Field(), new Field() };
-    [Parameter] public override bool IsSelected { get; set; } = false;
     [Parameter] public bool DisplayAsFolderItem { get; set; } = false;
-    [Parameter] public override bool IsFolder { get; set; } = false;
 
     // Component functions
     private void AddField() {

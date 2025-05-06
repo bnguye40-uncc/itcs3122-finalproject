@@ -16,9 +16,6 @@ public abstract class AbstractFolderItem : ComponentBase {
     // Virtual parameters
     [Parameter] public virtual string Class { get; set; } = "";
     [Parameter] public virtual string Name { get; set; } = "";
-    [Parameter] public virtual bool IsSelected { get; set; }
-    [Parameter] public virtual bool IsFolder { get; set; } 
-    [Parameter] public virtual string Key { get; set; } = "";       // Used for local storage
 
     // Virtual variables
     public virtual string showDisplay { get; set; } = "";
@@ -41,6 +38,11 @@ public abstract class AbstractFolderItem : ComponentBase {
         ToggleEditMode();
         await NameChanged.InvokeAsync(Name);
         _MainLayout.UpdateLocalStorage();
+    }
+
+    public virtual bool IsFolder() {
+        if ( Class == "folder" ) { return true; }
+        else { return false; }
     }
 
     // Two-way binding
