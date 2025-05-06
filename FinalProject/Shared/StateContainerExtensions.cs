@@ -12,6 +12,6 @@ public static class StateContainerExtensions
 
     public static T GetRoutingObjectParameter<T>(this StateContainer stateContainer, int hashCode)
     {
-        return (T) stateContainer.ObjectTunnel.PopValue(hashCode);
+        return (T) stateContainer.ObjectTunnel[hashCode];
     }
 }
