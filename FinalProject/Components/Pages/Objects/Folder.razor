@@ -46,7 +46,7 @@
                 @if (Items[index].IsFolder()) {
                     <Folder @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
                 } else {
-                    <Bookmark @bind-Name="Items[index].Name" DisplayAsFolderItem=true />
+                    <BookmarkFolderItem @bind-Name="Items[index].Name" />
                 }
             </CascadingValue>
         </div>

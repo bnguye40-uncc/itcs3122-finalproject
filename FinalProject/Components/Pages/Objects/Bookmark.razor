@@ -18,54 +18,33 @@
         flex-direction: row;
         align-items: flex-start;
     }
-
-    .hidden {
-        display: none;
-    }
 </style>
 
 <!-- Component -->
-@if (DisplayAsFolderItem) {
-    <span class="bookmark-item-heading">
-        <span class="display @showDisplay">
-            <NavLink class=@Class @onclick="NavigateToBookmark">
-                @Name
-            </NavLink>
-            <button class="edit-folder-item" @onclick="ToggleEditMode">Edit</button>
-        </span>
-        <span class="editing @showEditing">
-            <input placeholder="Bookmark Name..." @bind="@newName"/>
-            <button @onclick="SetValue">Done</button>
-        </span>
-    </span>
-}
-else
-{
-    <div class="bookmark">
-        <div class="bookmark-header">
-            <Field Class="name" Name="Name" Placeholder="Website name..." @bind-Value="Name" />
-        </div>
-        <div class="bookmark-contents">
-
-            <Field Class="url" Name="URL" Placeholder="Paste URL here..." @bind-Value="URL" />
-
-            <Field Class="keyword" Name="Keyword" Placeholder="Add a keyword..." @bind-Value="Keyword" />
-
-            <Field Class="description" Name="Description" Placeholder="Write a short description here..." @bind-Value="Description" />
-
-            <div class="custom-fields-list">
-                @for (int i = 0; i < CustomFields.Count; i++) {  
-                    
-                    var index = i;
-
-                    <div @key="CustomFields[index]" class="custom-field-container">
-                        <Field Class="custom-field" @bind-Name="CustomFields[index].Name" @bind-Value="CustomFields[index].Value" />
-                        <button class="delete-field" @onclick="@(e => DeleteField(index))">X</button>
-                    </div>
-                }
-                <button class="add-field" @onclick="AddField">Add Field</button>
-            </div>
-
-        </div>
+<div class="bookmark">
+    <div class="bookmark-header">
+        <Field Class="name" Name="Name" Placeholder="Website name..." @bind-Value="Name" />
     </div>
-}
+    <div class="bookmark-contents">
+
+        <Field Class="url" Name="URL" Placeholder="Paste URL here..." @bind-Value="URL" />
+
+        <Field Class="keyword" Name="Keyword" Placeholder="Add a keyword..." @bind-Value="Keyword" />
+
+        <Field Class="description" Name="Description" Placeholder="Write a short description here..." @bind-Value="Description" />
+
+        <div class="custom-fields-list">
+            @for (int i = 0; i < CustomFields.Count; i++) {  
+                
+                var index = i;
+
+                <div @key="CustomFields[index]" class="custom-field-container">
+                    <Field Class="custom-field" @bind-Name="CustomFields[index].Name" @bind-Value="CustomFields[index].Value" />
+                    <button class="delete-field" @onclick="@(e => DeleteField(index))">X</button>
+                </div>
+            }
+            <button class="add-field" @onclick="AddField">Add Field</button>
+        </div>
+
+    </div>
+</div>
