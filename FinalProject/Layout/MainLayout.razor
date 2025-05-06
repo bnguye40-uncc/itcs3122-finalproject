@@ -1,12 +1,12 @@
 ﻿@inherits LayoutComponentBase
-@inject Blazored.LocalStorage.ILocalStorageService localStorage
-@inject NavigationManager _navManager
+@inject Blazored.LocalStorage.ILocalStorageService _localStorage
+@inject NavigationManager _navigationManager
 @using FinalProject.Components.Pages.Objects
 
 <PageTitle>WebLibrary</PageTitle>
 
 <!-- Component -->
-@if (_navManager.Uri.Contains("popup.html"))
+@if (_navigationManager.Uri.Contains("popup.html"))
 {
     <div class="popup">
         @Body
@@ -43,14 +43,14 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        if (await localStorage.ContainKeyAsync(rootFolderKey)) {
-            RootFolder = await localStorage.GetItemAsync<List<AbstractFolderItem>>(rootFolderKey);
+        if (await _localStorage.ContainKeyAsync(rootFolderKey)) {
+            RootFolder = await _localStorage.GetItemAsync<List<AbstractFolderItem>>(rootFolderKey);
         } else {
-            await localStorage.SetItemAsync<List<AbstractFolderItem>>(rootFolderKey, RootFolder);
+            await _localStorage.SetItemAsync<List<AbstractFolderItem>>(rootFolderKey, RootFolder);
         }   
     }
 
     public async void UpdateLocalStorage() {
-        await localStorage.SetItemAsync<List<AbstractFolderItem>>(rootFolderKey, RootFolder);
+        await _localStorage.SetItemAsync<List<AbstractFolderItem>>(rootFolderKey, RootFolder);
     }
 }
