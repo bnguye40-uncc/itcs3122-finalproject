@@ -2,24 +2,25 @@
 <div class="@Class">
 
     <div class="display @showDisplay">
-        <button @onclick="ToggleEditMode">Edit</button>
-        <strong>@Name: </strong>
-        @if (Class == "url") {
-            <a href=@Value>@Value</a>
+        @if (Class == "name") {
+            <strong>@Value</strong>
         } else {
-            @Value
+            <strong>@Name: </strong>
+            @if (Class == "url") {
+                <a href=@Value>@Value</a>
+            } else {
+                @Value
+            }
         }
-        
+        <button @onclick="ToggleEditMode">Edit</button>
     </div>
 
     <div class="editing @showEditing">
-        <button @onclick="SetValue">Done</button>
-        <button @onclick="CancelEdit">Cancel</button>
         <label>
             <!-- Field Name -->
             @if (Class == "custom-field") {
                 <input placeholder="Field Name..." @bind="@newName"/>
-            } else {
+            } else if (Class != "name") {
                 <strong>@Name:</strong>
             }
             <!-- Field Value -->
@@ -28,6 +29,8 @@
             } else {
                 <input placeholder="@Placeholder" @bind="@newValue"/>
             }
+            <button @onclick="SetValue">Done</button>
+            <button @onclick="CancelEdit">Cancel</button>
         </label>
     </div>
 

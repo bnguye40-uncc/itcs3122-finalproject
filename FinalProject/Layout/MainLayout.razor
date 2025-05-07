@@ -15,6 +15,7 @@
 else
 {
     <div class="page">
+    
         <nav class="sidebar">
             <div class="root-folder-container">
                 <CascadingValue Value="this">
@@ -23,16 +24,22 @@ else
             </div>
         </nav>
 
-        <main>
-            <header class="header">
-                <a href="https://github.com/bnguye40-uncc/itcs3122-finalproject" target="_blank">About this project.</a>
-            </header>
-            <article class="content">
-                <CascadingValue Value="this">
-                    @Body
-                </CascadingValue>
-            </article>
-        </main>
+        <header class="header">
+            <div class="header-container">
+                <img src="images/bookmark-svgrepo-com.svg" width="72" height="72"/>
+                <div class="header-title">
+                    <h1>WebLibrary</h1>
+                    <a href="https://github.com/bnguye40-uncc/itcs3122-finalproject" target="_blank">About this project.</a>
+                </div>
+            </div>
+        </header>
+
+        <article class="content">
+            <CascadingValue Value="this">
+                @Body
+            </CascadingValue>
+        </article>
+
     </div>
 }
 

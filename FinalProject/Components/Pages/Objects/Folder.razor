@@ -13,6 +13,10 @@
         border: solid 1px darkgray;
     }
 
+    .item-container {
+        overflow-wrap: anywhere;
+    }
+
     .delete-item {
         float: right;
     }
@@ -45,7 +49,6 @@
 
     <li class="@($"item")">
         <div @key="Items[index]" class="item-container">
-            <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
             <CascadingValue Value="_MainLayout">
                 @if (Items[index].IsFolder()) {
                     <Folder @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
@@ -53,6 +56,9 @@
                     <BookmarkFolderItem @bind-Name="Items[index].Name" />
                 }
             </CascadingValue>
+            <span class="delete-button-container">
+                <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
+            </span>
         </div>
     </li>
 }
