@@ -1,0 +1,7 @@
+.bookmark-item-heading:hover {
+    background-color: lightgray;
+}
+
+.hidden {
+    display: none;
+}

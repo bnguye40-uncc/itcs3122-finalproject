@@ -1,0 +1,13 @@
+.bookmark-header {
+    display: flex;
+    flex-direction: row;
+    * {
+        font-size: 20pt;
+    }
+}
+
+.custom-field-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}

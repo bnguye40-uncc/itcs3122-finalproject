@@ -1,0 +1,22 @@
+.folder-items-list {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+.folder-heading:hover {
+    background-color: lightgray;
+}
+
+.item-container {
+    word-break: break-all;
+    margin-left: 2em;
+}
+
+.delete-item, .add-bookmark, .add-folder {
+    float: right;
+}
+
+.hidden {
+    display: none;
+}

@@ -6,24 +6,6 @@
 @inject NavigationManager _navigationManager
 @inherits AbstractFolderItem
 
-<!-- CSS -->
-<style>
-    .bookmark-header {
-        display: flex;
-        flex-direction: row;
-        * {
-            font-size: 20pt;
-        }
-    }
-
-    .custom-field-container {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-    }
-</style>
-
-<!-- Component -->
 <div class="bookmark">
     <div class="bookmark-header">
         <Field Class="name" Name="Name" Placeholder="Website name..." @bind-Value="Name" />

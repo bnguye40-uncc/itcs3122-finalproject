@@ -1,46 +1,22 @@
 @inject Blazored.LocalStorage.ILocalStorageService _localStorage
 @inherits AbstractFolderItem
 
-<!-- CSS -->
-<style>
-    .folder-items-list {
-        padding: 0px;
-        margin: 0px 0px 0px 1em;
-    }
-
-    .item:hover {
-        background-color: lightgray;
-        border: solid 1px darkgray;
-    }
-
-    .item-container {
-        overflow-wrap: anywhere;
-    }
-
-    .delete-item {
-        float: right;
-    }
-
-    .hidden {
-        display: none;
-    }
-</style>
-
-<!-- Component -->
-<span class="folder-heading">
+<div class="folder-heading">
     <span class="display @showDisplay">
         <NavLink class="@($"{Class}")" @onclick="Expand">
             @Name
         </NavLink>
+        <button class="add-bookmark" @onclick="AddBookmark">ABM</button>
+        <button class="add-folder" @onclick="AddFolder">AF</button>
         <button class="edit-folder-item" @onclick="ToggleEditMode">Edit</button>
     </span>
     <span class="editing @showEditing">
         <input placeholder="Folder Name..." @bind="@newName"/>
-        <button @onclick="SetValue">Done</button>
+        <button class="add-bookmark" @onclick="AddBookmark">ABM</button>
+        <button class="add-folder" @onclick="AddFolder">AF</button>
+        <button class="set-value" @onclick="SetValue">Done</button>
     </span>
-    <button class="add-bookmark" @onclick="AddBookmark">ABM</button>
-    <button class="add-folder" @onclick="AddFolder">AF</button>
-</span>
+</div>
 
 <ul class="@($"folder-items-list {expandFolder}")">
 @for (int i = 0; i < Items.Count; i++) {
@@ -49,6 +25,7 @@
 
     <li class="@($"item")">
         <div @key="Items[index]" class="item-container">
+            <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
             <CascadingValue Value="_MainLayout">
                 @if (Items[index].IsFolder()) {
                     <Folder @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
@@ -56,9 +33,6 @@
                     <BookmarkFolderItem @bind-Name="Items[index].Name" />
                 }
             </CascadingValue>
-            <span class="delete-button-container">
-                <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
-            </span>
         </div>
     </li>
 }
