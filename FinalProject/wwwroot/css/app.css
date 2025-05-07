@@ -1,9 +1,5 @@
-﻿html, body {
+﻿html, body, * {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin: 0px;
-}
-
-* {
     margin: 0px;
 }
 
@@ -17,6 +13,21 @@ h1:focus {
 
 a, .btn-link {
     color: #01a59c;
+}
+
+input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+input:focus {
+    text-decoration: underline;
+}
+
+button {
+    background-color: transparent;
+    border: transparent;
 }
 
 .btn-primary {

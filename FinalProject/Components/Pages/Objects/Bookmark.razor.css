@@ -10,6 +10,7 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    width: fit-content;
 }
 
 .delete-field {
@@ -20,8 +21,25 @@
     pointer-events: none;
 }
 
-/* If custom field is in display mode and mouse is hovering over it, display delete field and activate pointer events. */
-.custom-field-container:has(.custom-field > .display:not(.hidden)) {
+.add-field {
+    display: flex;
+    align-items: center;
+    color: lightgray;
+    border-radius: 2px;
+    margin: .2em 0px;
+    > span {
+        padding: 0px .4em;
+        font-size: 11pt;
+    }
+}
+
+.add-field:hover {
+    color: black;
+    background-color: lightgray;
+}
+
+/* If mouse hovers over custom field in display mode, display delete button and activate pointer events. */
+.custom-field-container:hover:has(.custom-field > .display:not(.hidden)) {
     > .delete-field {
         opacity: 1;
         pointer-events: auto;

@@ -20,16 +20,16 @@
         <label>
             <!-- Field Name -->
             @if (Class == "custom-field") {
-                <input placeholder="Field Name..." @bind="@newName" />
+                <input class="field-name text-input" placeholder="Field Name..." @bind="@newName" />
+                <span>: </span>
             } else if (Class != "name") {
                 <strong>@Name:</strong>
             }
-            :
             <!-- Field Value -->
             @if (Class == "description") {
                 <textarea placeholder="@Placeholder" @bind="@newValue" rows="4" cols="130"></textarea>
             } else {
-                <input placeholder="@Placeholder" @bind="@newValue"/>
+                <input class="field-value text-input" placeholder="@Placeholder" @bind="@newValue"/>
             }
             <button class="set-value" @onclick="SetValue">
                 <img src="images/check.svg" width="18" height="18"/>

@@ -1,12 +1,28 @@
-.display:hover {
-    > .edit-field {
-        display: inline-flex;
-    }
-}
-
 .edit-field, .set-value, .cancel-edit {
     display: inline-flex;
     padding: 1px;
+}
+
+.edit-field {
+    display: inline-flex;
+    margin: 0px .4em;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.display:hover {
+    > .edit-field {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.field-name {
+    width: 10ch;
+}
+
+.field-value {
+    width: min-content;
 }
 
 .hidden {

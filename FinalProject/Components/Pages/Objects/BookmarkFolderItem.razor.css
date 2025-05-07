@@ -7,6 +7,17 @@
     padding: 1px;
 }
 
+.edit-folder-item {
+    opacity: 0;
+    pointer-events: none;
+}
+
 .hidden {
     display: none;
+}
+
+/* If mouse hovers over item in display mode, show edit button. */
+.display:hover > .edit-folder-item {
+    opacity: 1;
+    pointer-events: auto;
 }
