@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 24 24"
+   fill="none"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="add-field.svg"
+   inkscape:version="1.4 (e7c3feb, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.253125"
+     inkscape:cx="-197.53086"
+     inkscape:cy="-35.555555"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Edit / Text_Align_Left" />
+  <g
+     id="Edit / Text_Align_Left">
+    <path
+       id="Vector"
+       d="M 4,18 H 9.2231009 M 4,14 12.876554,14 M 4,10 H 20 M 4,6 h 16"
+       stroke="#000000"
+       stroke-width="2"
+       stroke-linecap="round"
+       stroke-linejoin="round"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       d="m 21.809814,16.933576 h -3 v -3 c -9e-4,-1.332438 -2.000893,-1.332438 -1.999999,0 v 3 h -3 c -1.332438,9e-4 -1.332438,2.000893 0,1.999999 h 3 v 3 c 9e-4,1.332438 2.000893,1.332438 1.999999,0 v -3 h 3 c 1.332438,-9e-4 1.332438,-2.000893 0,-1.999999 z"
+       id="path2"
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.6;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       sodipodi:nodetypes="ccccccccccccc" />
+  </g>
+</svg>

@@ -1,13 +1,12 @@
 .display:hover {
     > .edit-field {
-        display: inline;
+        display: inline-flex;
     }
 }
 
-.edit-field {
-    display: none;
-    background-color: transparent;
-    border: none;
+.edit-field, .set-value, .cancel-edit {
+    display: inline-flex;
+    padding: 1px;
 }
 
 .hidden {

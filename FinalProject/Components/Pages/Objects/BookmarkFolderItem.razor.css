@@ -2,6 +2,11 @@
     background-color: lightgray;
 }
 
+.edit-folder-item, .delete-item, .set-value {
+    display: inline-flex;
+    padding: 1px;
+}
+
 .hidden {
     display: none;
 }

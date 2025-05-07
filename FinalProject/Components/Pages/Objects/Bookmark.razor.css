@@ -9,18 +9,21 @@
 .custom-field-container {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-    width: max-content;
+    align-items: flex-start;
 }
 
 .delete-field {
-    display: none;
-    background-color: transparent;
-    border: none;
+    float: right;
+    display: inline-flex;
+    padding: 1px;
+    opacity: 0;
+    pointer-events: none;
 }
 
-.custom-field-container:hover {
+/* If custom field is in display mode and mouse is hovering over it, display delete field and activate pointer events. */
+.custom-field-container:has(.custom-field > .display:not(.hidden)) {
     > .delete-field {
-        display: flex;
+        opacity: 1;
+        pointer-events: auto;
     }
 }

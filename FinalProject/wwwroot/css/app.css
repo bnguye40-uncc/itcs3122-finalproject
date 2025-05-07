@@ -7,6 +7,10 @@
     margin: 0px;
 }
 
+*:not(h1):not(h2):not(h3) {
+    font-size: 12pt;
+}
+
 h1:focus {
     outline: none;
 }

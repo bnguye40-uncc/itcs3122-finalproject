@@ -10,7 +10,12 @@
 
 .item-container {
     word-break: break-all;
-    margin-left: 2em;
+    margin-left: 1.5em;
+}
+
+.edit-folder-item, .delete-item, .add-bookmark, .add-folder, .set-value {
+    display: inline-flex;
+    padding: 1px;
 }
 
 .delete-item, .add-bookmark, .add-folder {

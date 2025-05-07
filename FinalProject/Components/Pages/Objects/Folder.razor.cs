@@ -27,7 +27,7 @@ public partial class Folder : AbstractFolderItem
     }
 
     private void Expand() {
-        if (Class == "root") { return; }
+        if (Class == "root folder") { return; }
         isExpanded = !isExpanded;
         expandFolder = isExpanded ? "" : "hidden";
     }

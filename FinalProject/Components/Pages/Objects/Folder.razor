@@ -6,17 +6,29 @@
         <NavLink class="@($"{Class}")" @onclick="Expand">
             @Name
         </NavLink>
-        <button class="add-bookmark" @onclick="AddBookmark">B</button>
-        <button class="add-folder" @onclick="AddFolder">F</button>
+        <button class="add-bookmark" @onclick="AddBookmark">
+            <img src="images/add-bookmark.svg" width="18" height="18"/>
+        </button>
+        <button class="add-folder" @onclick="AddFolder">
+            <img src="images/add-folder.svg" width="18" height="18"/>
+        </button>
         @if (Class != "root") {
-            <button class="edit-folder-item" @onclick="ToggleEditMode">E</button>
+            <button class="edit-folder-item" @onclick="ToggleEditMode">
+                <img src="images/edit.svg" width="18" height="18"/>
+            </button>
         }
     </span>
     <span class="editing @showEditing">
         <input placeholder="Folder Name..." @bind="@newName"/>
-        <button class="add-bookmark" @onclick="AddBookmark">B</button>
-        <button class="add-folder" @onclick="AddFolder">F</button>
-        <button class="set-value" @onclick="SetValue">Done</button>
+        <button class="add-bookmark" @onclick="AddBookmark">
+            <img src="images/add-bookmark.svg" width="18" height="18"/>
+        </button>
+        <button class="add-folder" @onclick="AddFolder">
+            <img src="images/add-folder.svg" width="18" height="18"/>
+        </button>
+        <button class="set-value" @onclick="SetValue">
+            <img src="images/check.svg" width="18" height="18"/>
+        </button>
     </span>
 </div>
 
@@ -27,7 +39,9 @@
 
     <li class="@($"item")">
         <div @key="Items[index]" class="item-container">
-            <button class="delete-item" @onclick="@(e => DeleteItem(index))">X</button>
+            <button class="delete-item" @onclick="@(e => DeleteItem(index))">
+                <img src="images/delete.svg" width="18" height="18"/>
+            </button>
             <CascadingValue Value="_MainLayout">
                 @if (Items[index].IsFolder()) {
                     <Folder @bind-Name="Items[index].Name" @bind-Items="((Folder)Items[index]).Items" />
