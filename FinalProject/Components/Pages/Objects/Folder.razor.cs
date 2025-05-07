@@ -17,7 +17,7 @@ public partial class Folder : AbstractFolderItem
 
     // Component functions
     private void AddBookmark() {
-        Items.Add(new BookmarkFolderItem());
+        Items.Add(new Bookmark());
         _MainLayout.UpdateLocalStorage();
     }
 

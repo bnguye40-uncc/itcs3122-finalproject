@@ -14,16 +14,27 @@ public partial class Bookmark : AbstractFolderItem
     [Parameter] public string URL { get; set; } = "https://docs.microsoft.com/aspnet/";
     [Parameter] public string Keyword { get; set; } = "keyword";
     [Parameter] public List<Field> CustomFields { get; set; } = new List<Field> { new Field(), new Field() };
-    [Parameter] public int SetHashCode { get; set; }        // Used for hashed routing
+    [Parameter] public int SetHashCode { get; set; }       // Used for hashed routing
 
     // Component functions
+    protected override void OnInitialized()
+    {
+        _stateContainer.AddRoutingObjectParameter(this);
+    }
+
     protected override void OnParametersSet() {
-        var data = _stateContainer.GetRoutingObjectParameter<BookmarkFolderItem>(SetHashCode);
-        Name = data.Name;
-        Description = data.Description;
-        URL = data.URL;
-        Keyword = data.Keyword;
-        CustomFields = data.CustomFields;
+        if (SetHashCode != 0) {
+            var data = _stateContainer.GetRoutingObjectParameter<Bookmark>(SetHashCode);
+            Name = data.Name;
+            Description = data.Description;
+            URL = data.URL;
+            Keyword = data.Keyword;
+            CustomFields = data.CustomFields;
+        }
+    }
+
+    private void NavigateToBookmark() {
+        _navigationManager.NavigateTo($"bookmark/{this.GetHashCode()}");
     }
 
     private void AddField() {
