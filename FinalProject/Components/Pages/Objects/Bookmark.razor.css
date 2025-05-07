@@ -10,4 +10,17 @@
     display: flex;
     flex-direction: row;
     align-items: flex-end;
+    width: max-content;
+}
+
+.delete-field {
+    display: none;
+    background-color: transparent;
+    border: none;
+}
+
+.custom-field-container:hover {
+    > .delete-field {
+        display: flex;
+    }
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   fill="#000000"
+   width="800px"
+   height="800px"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="bookmark1-svgrepo-com.svg"
+   inkscape:version="1.4 (e7c3feb, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.50625"
+     inkscape:cx="244.93827"
+     inkscape:cy="476.04938"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">bookmark1</title>
+  <path
+     id="path1"
+     style="stroke-width:0.923813"
+     d="M 6.8476562,3 C 5.8277664,3 5,3.8277664 5,4.8476562 V 25.171484 c 0,1.01989 0.8277664,1.847657 1.8476562,1.847657 h 0.9237501 7.8431247 c -2.660029,-2.660029 -1.205986,-6.585782 2.498579,-6.585782 h 1.355874 v -1.536392 c 0,-3.346543 3.313152,-4.911445 5.854922,-3.443953 l 0,-8.7577796 H 15.64973 V 15.559609 L 11.980199,13.076406 8.3138709,15.599141 V 6.6963281 H 7.7714063 l -0.9237501,-0.00109 c -0.509945,0 -0.9238281,-0.4138833 -0.9238281,-0.9238281 V 4.8476562 c 0,-0.5108687 0.4138831,-0.9238281 0.9238281,-0.9238281 H 25.067969 C 24.747406,3.3732353 24.158024,3 23.47625,3 Z m 2.2958237,2.2127344 v 8.7870316 l 2.8367191,-2.01125 2.777266,2.01125 V 5.2127344 Z"
+     sodipodi:nodetypes="ssssccscsccccccccsssscsscccccc" />
+  <path
+     d="m 28.622182,22.803125 h -4 v -4 c -0.0012,-1.776584 -2.667858,-1.776584 -2.666666,0 v 4 h -4 c -1.776584,0.0012 -1.776584,2.667858 0,2.666666 h 4 v 4 c 0.0012,1.776584 2.667858,1.776584 2.666666,0 v -4 h 4 c 1.776584,-0.0012 1.776584,-2.667858 0,-2.666666 z"
+     id="path2"
+     style="display:inline;stroke:none;stroke-width:4.8;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+     sodipodi:nodetypes="ccccccccccccc" />
+</svg>

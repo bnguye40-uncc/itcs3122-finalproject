@@ -1,3 +1,15 @@
+.display:hover {
+    > .edit-field {
+        display: inline;
+    }
+}
+
+.edit-field {
+    display: none;
+    background-color: transparent;
+    border: none;
+}
+
 .hidden {
     display: none;
 }

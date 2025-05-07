@@ -11,7 +11,9 @@
                 @Value
             }
         }
-        <button @onclick="ToggleEditMode">Edit</button>
+        <button class="edit-field" @onclick="ToggleEditMode">
+            <img src="images/edit.svg" width="16" height="16"/>
+        </button>
     </div>
 
     <div class="editing @showEditing">
@@ -24,7 +26,7 @@
             }
             <!-- Field Value -->
             @if (Class == "description") {
-                <textarea placeholder="@Placeholder" @bind="@newValue" rows="4" cols="120"></textarea>
+                <textarea placeholder="@Placeholder" @bind="@newValue" rows="4" cols="130"></textarea>
             } else {
                 <input placeholder="@Placeholder" @bind="@newValue"/>
             }

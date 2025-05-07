@@ -25,7 +25,9 @@
 
                 <div @key="CustomFields[index]" class="custom-field-container">
                     <Field Class="custom-field" @bind-Name="CustomFields[index].Name" @bind-Value="CustomFields[index].Value" />
-                    <button class="delete-field" @onclick="@(e => DeleteField(index))">X</button>
+                    <button class="delete-field" @onclick="@(e => DeleteField(index))">
+                        <img src="images/delete.svg" width="16" height="16"/>
+                    </button>
                 </div>
             }
             <button class="add-field" @onclick="AddField">Add Field</button>
