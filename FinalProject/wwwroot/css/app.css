@@ -3,12 +3,16 @@
     margin: 0px;
 }
 
+* {
+    margin: 0px;
+}
+
 h1:focus {
     outline: none;
 }
 
 a, .btn-link {
-    color: #0071c1;
+    color: #01a59c;
 }
 
 .btn-primary {

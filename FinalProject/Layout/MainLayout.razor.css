@@ -4,6 +4,7 @@
 
 .page {
     display: grid;
+    min-height: 100dvh;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr 5fr;
     grid-template-areas:
@@ -15,7 +16,7 @@
     grid-area: a;
     display: flex;
     flex-direction: column;
-    min-width: 240px;
+    min-width: 360px;
     padding: 3em 0px 3em 3em;
 }
 
@@ -29,13 +30,12 @@
     min-width: 480px;
     height: fit-content;
     background-color: antiquewhite;
-    padding-top: 2em;
 }
 
 .header-container {
     display: flex;
     flex-direction: row;
-    padding: 1em;
+    padding: 1.5em;
 }
 
 .header-title {

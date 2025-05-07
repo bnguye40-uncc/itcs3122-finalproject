@@ -6,14 +6,16 @@
         <NavLink class="@($"{Class}")" @onclick="Expand">
             @Name
         </NavLink>
-        <button class="add-bookmark" @onclick="AddBookmark">ABM</button>
-        <button class="add-folder" @onclick="AddFolder">AF</button>
-        <button class="edit-folder-item" @onclick="ToggleEditMode">Edit</button>
+        <button class="add-bookmark" @onclick="AddBookmark">B</button>
+        <button class="add-folder" @onclick="AddFolder">F</button>
+        @if (Class != "root") {
+            <button class="edit-folder-item" @onclick="ToggleEditMode">E</button>
+        }
     </span>
     <span class="editing @showEditing">
         <input placeholder="Folder Name..." @bind="@newName"/>
-        <button class="add-bookmark" @onclick="AddBookmark">ABM</button>
-        <button class="add-folder" @onclick="AddFolder">AF</button>
+        <button class="add-bookmark" @onclick="AddBookmark">B</button>
+        <button class="add-folder" @onclick="AddFolder">F</button>
         <button class="set-value" @onclick="SetValue">Done</button>
     </span>
 </div>
