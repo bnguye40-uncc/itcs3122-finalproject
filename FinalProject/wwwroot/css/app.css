@@ -1,6 +1,7 @@
 ﻿html, body, * {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0px;
+    color: #fff;
 }
 
 *:not(h1):not(h2):not(h3) {
@@ -12,7 +13,11 @@ h1:focus {
 }
 
 a, .btn-link {
-    color: #01a59c;
+    color: #fff;
+}
+
+a:hover, .btn-link:hover {
+    color: #e52e39;
 }
 
 input {
@@ -28,6 +33,10 @@ input:focus {
 button {
     background-color: transparent;
     border: transparent;
+}
+
+body:has(#app > .loading-progress) {
+    background-color: #29292c;
 }
 
 .btn-primary {

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   version="1.1"
+   id="Uploaded to svgrepo.com"
+   width="800px"
+   height="800px"
+   viewBox="0 0 32 32"
+   xml:space="preserve"
+   sodipodi:docname="favicon.svg"
+   inkscape:version="1.4 (e7c3feb, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs4" /><sodipodi:namedview
+   id="namedview4"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="0.50625"
+   inkscape:cx="359.50617"
+   inkscape:cy="296.2963"
+   inkscape:window-width="1920"
+   inkscape:window-height="1012"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g4" />
+<style
+   type="text/css"
+   id="style1">
+	.pictogram_zes{fill:#0C6667;}
+	.pictogram_vijf{fill:#01A59C;}
+	.pictogram_twee{fill:#F8AD89;}
+	.pictogram_een{fill:#F4D6B0;}
+	.pictogram_vier{fill:#E54D2E;}
+	.st0{fill:none;}
+	.st1{fill:#F27261;}
+</style>
+<g
+   id="g4">
+	<path
+   class="pictogram_zes"
+   d="M32,29c0,1.65-1.35,3-3,3H3c-1.65,0-3-1.35-3-3V3c0-1.65,1.35-3,3-3h26c1.65,0,3,1.35,3,3V29z"
+   id="path1"
+   style="fill:#502f37;fill-opacity:1" />
+	<path
+   class="pictogram_vijf"
+   d="M4,13.839V32h25c1.65,0,3-1.35,3-3V18H8C5.791,18,4,16.048,4,13.839z"
+   id="path2"
+   style="fill:#96624a;fill-opacity:1" />
+	<path
+   class="pictogram_twee"
+   d="M19,13h13v3H19V13z M9.5,13C8.671,13,8,13.671,8,14.5S8.671,16,9.5,16H11v-3H9.5z"
+   id="path3"
+   style="fill:#e9bf98;fill-opacity:1" />
+	<path
+   class="pictogram_een"
+   d="M 32,18 H 8 C 5.791,18 4,16.048 4,13.839 v -2 C 4,9.63 5.791,8 8,8 h 24 z"
+   id="path4"
+   style="fill:#efd5b5;fill-opacity:1"
+   sodipodi:nodetypes="csssscc" />
+	<polygon
+   class="pictogram_vier"
+   points="19,7 15,10 11,7 11,16 19,16  "
+   id="polygon4"
+   style="fill:#e52e39;fill-opacity:1" />
+</g>
+</svg>

@@ -1,5 +1,6 @@
 .bookmark-item-heading:hover {
-    background-color: lightgray;
+    background-color: #57555a;
+    cursor: pointer;
 }
 
 .edit-folder-item, .delete-item, .set-value {

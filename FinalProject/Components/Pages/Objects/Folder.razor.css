@@ -5,12 +5,12 @@
 }
 
 .folder-heading:hover {
-    background-color: lightgray;
-}
-
-.item-container {
-    word-break: break-all;
-    margin-left: 1.5em;
+    background-color: #57555a;
+    cursor: pointer;
+    .add-bookmark, .add-folder {
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
 .edit-folder-item, .delete-item, .add-bookmark, .add-folder, .set-value {
@@ -23,8 +23,18 @@
     pointer-events: none;
 }
 
-.delete-item, .add-bookmark, .add-folder {
+.add-bookmark, .add-folder, .delete-item {
     float: right;
+}
+
+.add-bookmark, .add-folder {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.item-container {
+    word-break: break-all;
+    padding-left: 1.5em;
 }
 
 .hidden {
@@ -37,10 +47,18 @@
     pointer-events: auto;
 }
 
-/* If folder is root folder, always hide edit button and remove pointer events. */
+/* If folder is root folder... */
+.folder-heading:hover:has(.display > .root) {
+    background-color: transparent;
+}
+
 .folder-heading:has(.display > .root) {
-    .display > .edit-folder-item {
+    .display > .edit-folder-item { /* Always hide edit button and remove pointer events. */
         opacity: 0;
         pointer-events: none;
+    }
+    .add-bookmark, .add-folder { /* Always show add bookmark and add folder buttons. */
+        opacity: 1;
+        pointer-events: auto;
     }
 }

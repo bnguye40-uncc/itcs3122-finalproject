@@ -4,14 +4,13 @@
 <div class="folder-heading">
     <span class="display @showDisplay">
         <NavLink class="@($"{Class}")" @onclick="Expand">
-            @Name
+            @if (isExpanded) {
+                @(Name)
+            } else {
+                @(Name + " [...]")
+            }
+            
         </NavLink>
-        <button class="add-bookmark" @onclick="AddBookmark">
-            <img src="images/add-bookmark.svg" width="18" height="18"/>
-        </button>
-        <button class="add-folder" @onclick="AddFolder">
-            <img src="images/add-folder.svg" width="18" height="18"/>
-        </button>
         <button class="edit-folder-item" @onclick="ToggleEditMode">
             <img src="images/edit.svg" width="18" height="18"/>
         </button>
@@ -19,16 +18,17 @@
     
     <span class="editing @showEditing">
         <input placeholder="Folder Name..." @bind="@newName"/>
-        <button class="add-bookmark" @onclick="AddBookmark">
-            <img src="images/add-bookmark.svg" width="18" height="18"/>
-        </button>
-        <button class="add-folder" @onclick="AddFolder">
-            <img src="images/add-folder.svg" width="18" height="18"/>
-        </button>
         <button class="set-value" @onclick="SetValue">
             <img src="images/check.svg" width="18" height="18"/>
         </button>
     </span>
+
+    <button class="add-bookmark" @onclick="AddBookmark">
+        <img src="images/add-bookmark.svg" width="18" height="18"/>
+    </button>
+    <button class="add-folder" @onclick="AddFolder">
+        <img src="images/add-folder.svg" width="18" height="18"/>
+    </button>
 </div>
 
 <ul class="@($"folder-items-list {expandFolder}")">
@@ -36,7 +36,7 @@
 
     var index = i;
 
-    <li class="@($"item")">
+    <li class="item">
         <div @key="Items[index]" class="item-container">
             <button class="delete-item" @onclick="@(e => DeleteItem(index))">
                 <img src="images/delete.svg" width="18" height="18"/>

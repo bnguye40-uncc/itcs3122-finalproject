@@ -27,7 +27,7 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="0.35797281"
-     inkscape:cx="-324.04696"
+     inkscape:cx="-326.84047"
      inkscape:cy="550.32113"
      inkscape:window-width="1920"
      inkscape:window-height="1012"
@@ -39,12 +39,12 @@
      id="title1">bookmark1</title>
   <path
      id="path1"
-     style="stroke-width:0.923813"
+     style="stroke-width:0.923813;fill:#ffffff;fill-opacity:1"
      d="M 6.8476562,3 C 5.8277664,3 5,3.8277664 5,4.8476562 V 25.171484 c 0,1.01989 0.8277664,1.847657 1.8476562,1.847657 h 0.9237501 l 7.4875687,0 c -2.660029,-2.660029 -1.166479,-6.980844 2.538086,-6.980844 h 1.355874 v -1.536392 c 0,-3.346543 3.629201,-4.792926 6.170971,-3.325434 l 0,-8.4812366 H 16.99294 V 16.310226 L 12.651804,13.827023 8.3138709,16.349758 V 6.6963281 H 7.7714063 l -0.9237501,-0.00109 c -0.509945,0 -0.9238281,-0.4138833 -0.9238281,-0.9238281 V 4.8476562 c 0,-0.5108687 0.4138831,-0.9238281 0.9238281,-0.9238281 H 25.067969 C 24.747406,3.3732353 24.158024,3 23.47625,3 Z m 2.9674286,2.2127344 v 8.5104886 l 2.8367192,-1.734707 2.777266,1.734707 V 5.2127344 Z"
      sodipodi:nodetypes="ssssccscsccccccccsssscsscccccc" />
   <path
      d="m 28.622182,22.803125 h -4 v -4 c -0.0012,-1.776584 -2.667858,-1.776584 -2.666666,0 v 4 h -4 c -1.776584,0.0012 -1.776584,2.667858 0,2.666666 h 4 v 4 c 0.0012,1.776584 2.667858,1.776584 2.666666,0 v -4 h 4 c 1.776584,-0.0012 1.776584,-2.667858 0,-2.666666 z"
      id="path2"
-     style="display:inline;stroke:none;stroke-width:4.8;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+     style="display:inline;stroke:none;stroke-width:4.8;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers;fill:#ffffff;fill-opacity:1"
      sodipodi:nodetypes="ccccccccccccc" />
 </svg>
